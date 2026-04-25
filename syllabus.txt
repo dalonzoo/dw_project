@@ -1,0 +1,25 @@
+Course topics
+
+q Recap on relational data bases
+q The modules of a Data Base Management System (DBMS)
+– The structure of a DBMS
+– Buffer manager
+q Transaction management
+– The concept of transaction
+– Concurrency management
+q Crash management
+– Classification of failures
+– Recovery
+q Physical structures for data bases
+– File organizations for data base management
+– Principles of physical database design
+q Query processing
+– Evaluation of relational algebra operators
+– Fundamentals of query optimization
+q Data Warehousing
+– Data warehouse architectures and operators
+– Data warehouse design
+– OLAP vs OLTP
+q NoSQL databases
+– Document-based databases
+– Graph databases
