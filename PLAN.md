@@ -1,61 +1,292 @@
-# Urban Night Mobility Data Warehouse
+# Urban Night Mobility Data Warehouse Roadmap
 
-## Summary
-Build a PostgreSQL/PostGIS data warehouse that analyzes Citi Bike night and weekend mobility in NYC, enriched with weather, holidays, and geography. The project will target a top grade by emphasizing a clear reconciled layer, a well-motivated DFM, a snowflake/star schema hybrid, and more than 3 non-trivial dimensional hierarchies.
+## How To Use This File
+- This file is the project source of truth. Every person or model working on the project must update it before stopping.
+- Status values: `TODO`, `DOING`, `BLOCKED`, `DONE`.
+- Before stopping work, update `Current Resume Point`, the relevant phase status, and `Progress Log`.
+- Do not mark a task as `DONE` unless its "Done when" checks are satisfied.
+- The proposal is approved, so implementation can start.
+- If a future worker stops mid-task, they must leave a short note in `Progress Log` explaining what changed, what was verified, and what should happen next.
 
-Use a full, stable year of Citi Bike trip data, preferably 2024 for reproducibility unless you later confirm 2025 is complete and easier to use. Official Citi Bike trip files include ride ID, bike type, timestamps, station IDs/names, coordinates, and member/casual status. NOAA GHCN-Daily provides daily weather elements such as precipitation, snow, temperature, and wind. Nager.Date provides public holiday metadata. NYC boundary data should use NTAs/CDTAs plus boroughs, not boroughs alone, to satisfy the professor's hierarchy warning.
+## Current Resume Point
+- Overall status: `DOING`.
+- Next step: start Phase 1 by creating the repository structure, `README.md`, `.gitignore`, dependency notes, and local database configuration plan.
+- Current phase: Phase 1 - Repository And Environment Setup.
+- Last updated: 2026-05-05.
 
-Sources: [Citi Bike System Data](https://citibikenyc.com/system-data), [NOAA GHCN-Daily](https://www.ncei.noaa.gov/products/land-based-station/global-historical-climatology-network-daily), [NOAA README](https://www.ncei.noaa.gov/pub/data/ghcn/daily/readme.txt), [Nager.Date API](https://date.nager.at/Api), [NYC NTAs](https://catalog.data.gov/dataset/2020-neighborhood-tabulation-areas-ntas), [NYC Borough Boundaries](https://catalog.data.gov/dataset/borough-boundaries).
+## Project Goal And Grade Strategy
+Build a PostgreSQL/PostGIS data warehouse that analyzes Citi Bike urban night mobility in NYC, enriched with weather, holidays, and geographic boundaries. The project aims for the highest grade by showing:
 
-## Key Changes
-- Use a 3-layer architecture: raw staging, reconciled relational layer, dimensional warehouse.
-- Model the main fact as `fact_trip`, at ride grain, with measures: trip count, duration, approximate distance, night flag, weekend flag, holiday-window flag, weather severity score, member/casual indicators, and station flow contribution.
-- Add a second aggregate fact, `fact_station_day_hour`, to support OLAP without scanning all rides during the demo.
-- Use a snowflaked dimensional model where it improves hierarchy depth:
+- Multiple integrated data sources through documented ETL.
+- A reconciled relational layer before the warehouse.
+- Mandatory DFM plus physical star/snowflake schema.
+- At least 3 non-trivial OLAP dimensions with real hierarchies.
+- Detailed SQL OLAP sessions with motivated findings.
+- A clear 10-15 minute presentation and 5 minute live demo.
+
+## Fixed Decisions
+- Project type: Data Warehousing.
+- Main fact grain: one Citi Bike ride in `fact_trip`.
+- Performance aggregate: station, day, and hour grain in `fact_station_day_hour`.
+- Default data period: full year 2024 for final analysis; use a smaller sample only for development.
+- Storage stack: PostgreSQL with PostGIS.
+- ETL stack: Python scripts plus SQL scripts.
+- Main non-trivial dimensions:
   - Time: timestamp -> hour -> part of day -> day -> week -> month -> quarter -> season -> year.
-  - Calendar/Event: date -> weekday/weekend -> holiday/bridge day/long weekend -> holiday type.
+  - Calendar/Event: date -> weekday/weekend -> holiday window -> long weekend -> holiday type.
   - Geography: station -> NTA -> CDTA/community district -> borough -> city.
-  - Station: station -> docking area role -> neighborhood -> borough, with start/end station roles handled through foreign keys.
-  - Weather: daily observation -> weather condition class -> precipitation/wind/temperature severity -> season.
-  - Rider/Bike: member/casual and classic/electric/docked bike dimensions.
-- Prefer PostgreSQL plus PostGIS because geographic point-in-polygon station enrichment is a strong, defensible modeling/ETL feature.
+  - Weather: daily observation -> condition class -> severity -> season.
+- Safer proposal deadline: July 31, 2026 from the instructions. The FAQ mentions August 31, 2026, so ask the professor only if timing depends on the later date.
 
-## Implementation Plan
-- Prepare the proposal and scope:
-  - User action required: fill in both students' names and matricole.
-  - User action required: send the one-page proposal and wait for approval before starting full implementation, as the course instructions require.
-  - Use July 31, 2026 as the safer proposal deadline from the instructions; the FAQ mentions August 31, 2026, so ask the professor only if submission timing depends on the later date.
-- Build ETL:
-  - Download selected Citi Bike monthly ZIP/CSV files.
-  - Load raw files into staging tables with minimal transformation.
-  - Clean invalid trips: missing timestamps, end before start, unusable station IDs, impossible coordinates, extreme durations.
-  - Derive duration, distance approximation, start/end date keys, hour keys, day/night category, weekend flag, and trip direction.
-  - Load NOAA daily weather for NYC-area stations, choose one primary station or average selected nearby stations, and document the choice.
-  - Load Nager.Date US holidays and derive bridge days, holiday eves, post-holiday days, and long weekends.
-  - Load NYC NTA/CDTA/borough boundaries and assign stations by spatial join.
-- Design deliverables:
-  - DFM diagram with the ride fact centered and all hierarchies visible.
-  - Logical reconciled schema.
-  - Physical star/snowflake schema in PostgreSQL.
-  - SQL scripts for schema creation, ETL loading, constraints, indexes, and OLAP queries.
-  - Short slide deck: problem, sources, ETL, reconciled layer, DFM, warehouse schema, OLAP findings, demo.
-- OLAP analysis sessions:
-  - Nightlife demand by borough/NTA, comparing weekday nights, weekend nights, and holiday windows.
-  - Weather impact on casual vs member riders, including rain, cold/heat, snow, and wind severity.
-  - Station inflow/outflow imbalance by time of day and geography.
-  - Electric vs classic bike usage at night and under bad weather.
-  - Top "night mobility corridors" using start/end NTA pairs.
-  - Before/after holiday and long-weekend effects.
+## Sources
+- Citi Bike System Data: https://citibikenyc.com/system-data
+- NOAA GHCN-Daily: https://www.ncei.noaa.gov/products/land-based-station/global-historical-climatology-network-daily
+- NOAA README: https://www.ncei.noaa.gov/pub/data/ghcn/daily/readme.txt
+- Nager.Date API: https://date.nager.at/Api
+- NYC NTAs: https://catalog.data.gov/dataset/2020-neighborhood-tabulation-areas-ntas
+- NYC Borough Boundaries: https://catalog.data.gov/dataset/borough-boundaries
 
-## Test Plan
-- Data quality checks: row counts per month, null rates, duplicate ride IDs, invalid timestamps, coordinate bounds, station enrichment coverage.
-- Reconciliation checks: every warehouse fact row has valid date, time, rider, bike, weather, and geography keys or a controlled `unknown` key.
-- OLAP checks: aggregate trip counts match staging counts after documented exclusions.
-- Demo checks: queries finish within presentation time using indexes and the aggregate fact table.
-- Presentation acceptance: 10-15 minute slides plus 5 minute live demo, with SQL queries shown and results interpreted.
+## User Actions
+- [x] Prepare the single-page PDF proposal with both students' names and matricole.
+- [x] Send the proposal email with subject `[DM] Project Proposal`, all group members included, and the PDF attached.
+- [x] Receive professor approval before starting implementation.
+- [ ] Optional: replace placeholders in `project_idea.md` if the repository copy must include names and matricole.
+- [ ] At the end of the project, send slides, repository link, and any useful material with subject `[DM] Project Discussion`.
 
-## Assumptions
-- The project remains a Data Warehousing project, not a NoSQL comparison.
-- The default implementation stack is Python for ETL and PostgreSQL/PostGIS for storage and spatial enrichment.
-- The default data period is full-year 2024 for stability; switch to full-year 2025 only after confirming all files are available and processing time remains manageable.
-- The final submission includes repository link, slides, SQL, ETL scripts, diagrams, and a concise README explaining how to reproduce the warehouse.
+## Roadmap
+
+### Phase 0 - Proposal Approval
+Status: `DONE`
+
+Goal: obtain approval for the project idea before implementation.
+
+Tasks:
+- [x] Draft proposal in `project_idea.md`.
+- [x] Remove unsupported age-based wording from the proposal.
+- [x] Strengthen the proposal around non-trivial dimensional hierarchies.
+- [x] Create this roadmap in `PLAN.md`.
+- [x] Add real student names and matricole to the submitted proposal PDF.
+- [x] Export the proposal as a one-page PDF.
+- [x] Send the proposal email and receive approval.
+
+Done when:
+- The professor approves the proposal.
+- If later feedback arrives, update this roadmap with the requested changes before continuing implementation.
+
+### Phase 1 - Repository And Environment Setup
+Status: `DOING`
+
+Goal: make the repository reproducible and ready for ETL, SQL, diagrams, and reports.
+
+Tasks:
+- [ ] Create a clean folder structure: `data_raw/`, `data_processed/`, `sql/`, `scripts/`, `docs/`, `diagrams/`, `reports/`.
+- [ ] Add a `README.md` explaining project goal, sources, setup, and execution order.
+- [ ] Add dependency files, preferably `requirements.txt` for Python and notes for PostgreSQL/PostGIS.
+- [ ] Add `.gitignore` rules for raw data, processed data, caches, database dumps, and local secrets.
+- [ ] Decide local database name, schema names, and connection configuration.
+
+Done when:
+- A new contributor can clone the repo, install dependencies, and understand where each artifact belongs.
+- Raw data is not committed to Git.
+
+### Phase 2 - Source Acquisition
+Status: `TODO`
+
+Goal: download or document all source datasets needed for the warehouse.
+
+Tasks:
+- [ ] Download or script download of Citi Bike monthly trip files for 2024.
+- [ ] Download or script download of NOAA daily weather data for one or more NYC-area stations.
+- [ ] Fetch or script fetch of US public holidays from Nager.Date for 2024.
+- [ ] Download NYC NTA/CDTA/community district and borough boundaries.
+- [ ] Create a source inventory table in the README or `docs/source_inventory.md`.
+- [ ] Record file names, source URLs, extraction date, row counts, and known limitations.
+
+Done when:
+- Every source has a reproducible acquisition method or a documented manual step.
+- Every source has a row count and a short semantic description.
+
+### Phase 3 - Staging Layer
+Status: `TODO`
+
+Goal: load raw source data into database staging tables with minimal transformation.
+
+Expected staging tables:
+- `stg_citibike_trips`
+- `stg_weather_daily`
+- `stg_holidays`
+- `stg_geo_nta`
+- `stg_geo_borough`
+- `stg_station_observations`
+
+Tasks:
+- [ ] Write SQL DDL for staging schemas and tables.
+- [ ] Write loading scripts for CSV/JSON/geospatial files.
+- [ ] Preserve raw source columns where practical.
+- [ ] Add load metadata: source file, load timestamp, and source period.
+- [ ] Produce staging row-count checks.
+
+Done when:
+- All sources load into staging without manual database edits.
+- Row counts match the downloaded files or documented filters.
+
+### Phase 4 - Reconciled Layer
+Status: `TODO`
+
+Goal: convert raw source tables into clean, semantically consistent relational tables.
+
+Expected reconciled entities:
+- Trips with validated timestamps, duration, start/end station references, coordinates, rideable type, and rider type.
+- Stations with stable IDs, names, coordinates, and geographic assignment.
+- Dates and calendar events with holiday windows and long-weekend flags.
+- Daily weather observations with derived condition and severity attributes.
+- Geographic areas with NTA/CDTA/community district, borough, and city hierarchy.
+
+Tasks:
+- [ ] Define cleaning rules for invalid trips: missing timestamps, end before start, impossible coordinates, missing station IDs, and extreme durations.
+- [ ] Derive trip duration, approximate distance, day/night category, weekend flag, and flow direction.
+- [ ] Build station reconciliation from observed start/end stations.
+- [ ] Use PostGIS point-in-polygon joins to assign stations to geographic areas.
+- [ ] Derive holiday eve, holiday, post-holiday, bridge day, and long-weekend attributes.
+- [ ] Derive weather class and weather severity score.
+- [ ] Document every exclusion and transformation rule.
+
+Done when:
+- Reconciled tables have primary keys and foreign keys where appropriate.
+- Data quality checks explain any excluded or unknown records.
+- The reconciled layer can be explained independently from the warehouse.
+
+### Phase 5 - DFM And Warehouse Design
+Status: `TODO`
+
+Goal: produce the conceptual DFM and the physical star/snowflake schema.
+
+Tasks:
+- [ ] Draw the DFM with `fact_trip` at the center.
+- [ ] Show measures: trip count, duration, approximate distance, late-night indicator, member/casual indicators, and flow contribution.
+- [ ] Show non-trivial Time, Calendar/Event, Geography, and Weather hierarchies.
+- [ ] Decide which dimensions are denormalized and which are snowflaked.
+- [ ] Motivate the star/snowflake choice in `docs/modeling_notes.md`.
+- [ ] Write SQL DDL for the warehouse schema.
+- [ ] Add indexes for common OLAP paths.
+
+Done when:
+- The DFM diagram and physical schema are consistent.
+- At least 3 dimensions clearly contain OLAP hierarchies.
+- The schema choice can be defended during the presentation.
+
+### Phase 6 - Warehouse Population
+Status: `TODO`
+
+Goal: populate dimensions and facts from the reconciled layer.
+
+Expected warehouse tables:
+- `dim_time`
+- `dim_date`
+- `dim_calendar_event`
+- `dim_weather`
+- `dim_station`
+- `dim_geography`
+- `dim_user_type`
+- `dim_rideable_type`
+- `fact_trip`
+- `fact_station_day_hour`
+
+Tasks:
+- [ ] Populate dimensions with surrogate keys.
+- [ ] Populate `fact_trip` at ride grain.
+- [ ] Populate `fact_station_day_hour` for demo-friendly OLAP.
+- [ ] Add controlled `unknown` dimension rows where necessary.
+- [ ] Verify that fact foreign keys resolve correctly.
+- [ ] Compare staging/reconciled counts against fact counts after exclusions.
+
+Done when:
+- Warehouse tables are populated from scripts end to end.
+- Fact counts reconcile with documented exclusions.
+- OLAP queries can run without scanning raw staging tables.
+
+### Phase 7 - OLAP Analysis
+Status: `TODO`
+
+Goal: create SQL analyses that demonstrate meaningful insights and OLAP operations.
+
+Required analysis sessions:
+- [ ] Nightlife demand by borough/NTA across weekdays, weekends, and holiday windows.
+- [ ] Weather impact on casual vs member riders.
+- [ ] Station inflow/outflow imbalance by time of day and geography.
+- [ ] Electric vs classic bike usage at night and under bad weather.
+- [ ] Top night mobility corridors using start/end NTA pairs.
+- [ ] Before/after holiday and long-weekend effects.
+
+Each analysis must include:
+- SQL query.
+- OLAP operation shown, such as roll-up, drill-down, slice, dice, or pivot.
+- Result table or chart.
+- Short interpretation of the finding.
+
+Done when:
+- There are at least 5 polished OLAP queries.
+- Results are non-trivial and tied back to the modeling choices.
+- Queries finish fast enough for the live demo.
+
+### Phase 8 - Quality Checks And Reproducibility
+Status: `TODO`
+
+Goal: make the project reliable enough to defend.
+
+Checks:
+- [ ] Raw file row counts match staging row counts.
+- [ ] Duplicate ride IDs are detected and handled.
+- [ ] Invalid timestamps and impossible durations are reported.
+- [ ] Station geographic enrichment coverage is reported.
+- [ ] Weather and calendar joins have expected coverage.
+- [ ] Every fact row has valid dimension keys or controlled `unknown` keys.
+- [ ] Aggregate fact totals match ride-grain fact totals for equivalent filters.
+
+Done when:
+- A script or documented SQL file runs the main checks.
+- The README explains how to reproduce the checks.
+
+### Phase 9 - Presentation And Demo
+Status: `TODO`
+
+Goal: prepare a clear 10-15 minute presentation plus 5 minute live demo.
+
+Slide outline:
+- [ ] Problem and motivation.
+- [ ] Data sources and integration challenge.
+- [ ] ETL architecture: staging, reconciled layer, warehouse.
+- [ ] DFM and dimensional hierarchies.
+- [ ] Physical star/snowflake schema.
+- [ ] OLAP sessions and main insights.
+- [ ] Limitations and possible extensions.
+- [ ] Demo instructions.
+
+Demo checklist:
+- [ ] Database starts correctly.
+- [ ] Warehouse tables are populated.
+- [ ] Selected OLAP queries run within the available time.
+- [ ] Results shown in terminal, database client, notebook, or exported report.
+
+Done when:
+- Slides fit 10-15 minutes.
+- Demo fits 5 minutes.
+- Repository link and materials are ready for the discussion email.
+
+## Acceptance Checklist
+- [x] Proposal approved.
+- [ ] Reconciled layer implemented and documented.
+- [ ] DFM completed.
+- [ ] Star/snowflake schema implemented in PostgreSQL.
+- [ ] ETL scripts run end to end.
+- [ ] At least 3 non-trivial dimensional hierarchies are visible and used.
+- [ ] At least 5 OLAP analyses are implemented and interpreted.
+- [ ] README explains setup, data acquisition, ETL, warehouse build, and analysis.
+- [ ] Slides and live demo are ready.
+
+## Progress Log
+- 2026-05-05: Initial proposal and roadmap prepared while approval was still pending.
+- 2026-05-05: Proposal marked as approved. Current resume point moved to Phase 1: repository and environment setup.
+
+## Open Questions
+- Decide whether final execution will use all 12 months of 2024 or a reduced final subset if local compute becomes too slow.
