@@ -31,12 +31,25 @@ Build a PostgreSQL/PostGIS data warehouse that analyzes Citi Bike urban night mo
 - Default data period: full year 2024 for final analysis; use a smaller sample only for development.
 - Storage stack: PostgreSQL with PostGIS.
 - ETL stack: Python scripts plus SQL scripts.
+- Main DB/demo GUI: DBeaver connected to PostgreSQL.
+- Backup DB GUI: pgAdmin, mainly as a fallback if DBeaver has issues.
+- Diagram tools: draw.io, dbdiagram.io, or an equivalent ERD/DFM tool.
+- Optional analysis/charting layer: Jupyter, Quarto, or exported query results for charts in slides.
 - Main non-trivial dimensions:
   - Time: timestamp -> hour -> part of day -> day -> week -> month -> quarter -> season -> year.
   - Calendar/Event: date -> weekday/weekend -> holiday window -> long weekend -> holiday type.
   - Geography: station -> NTA -> CDTA/community district -> borough -> city.
   - Weather: daily observation -> condition class -> severity -> season.
 - Safer proposal deadline: July 31, 2026 from the instructions. The FAQ mentions August 31, 2026, so ask the professor only if timing depends on the later date.
+
+## Tooling Strategy
+- Use PostgreSQL as the real DBMS for the course deliverable, not only CSV files or notebooks.
+- Enable PostGIS because the project needs spatial ETL: station coordinates must be assigned to neighborhood/community district/borough polygons.
+- Use Python for downloading, cleaning, and transforming source files, but persist the final staging, reconciled, and warehouse layers in PostgreSQL.
+- Use DBeaver during development and presentation to show schemas, tables, saved SQL scripts, query results, and OLAP sessions.
+- Keep pgAdmin installed or available as a backup PostgreSQL administration tool.
+- Use diagrams in the final explanation: DFM conceptual schema, staging/reconciled/warehouse architecture, and physical star/snowflake schema.
+- For presentation, show the professor the database live through DBeaver, plus slides/charts for the most important insights.
 
 ## Sources
 - Citi Bike System Data: https://citibikenyc.com/system-data
@@ -84,10 +97,16 @@ Tasks:
 - [ ] Add dependency files, preferably `requirements.txt` for Python and notes for PostgreSQL/PostGIS.
 - [ ] Add `.gitignore` rules for raw data, processed data, caches, database dumps, and local secrets.
 - [ ] Decide local database name, schema names, and connection configuration.
+- [ ] Install or verify PostgreSQL and enable the PostGIS extension.
+- [ ] Install or verify DBeaver and create a saved connection to the local PostgreSQL database.
+- [ ] Install or verify pgAdmin as a backup administration tool.
+- [ ] Decide the diagram tool to use for DFM and schema diagrams.
 
 Done when:
 - A new contributor can clone the repo, install dependencies, and understand where each artifact belongs.
 - Raw data is not committed to Git.
+- DBeaver can connect to the local PostgreSQL database.
+- PostgreSQL can run `CREATE EXTENSION IF NOT EXISTS postgis;`.
 
 ### Phase 2 - Source Acquisition
 Status: `TODO`
@@ -169,6 +188,7 @@ Tasks:
 - [ ] Motivate the star/snowflake choice in `docs/modeling_notes.md`.
 - [ ] Write SQL DDL for the warehouse schema.
 - [ ] Add indexes for common OLAP paths.
+- [ ] Export final diagrams into `diagrams/` and reference them from the README/slides.
 
 Done when:
 - The DFM diagram and physical schema are consistent.
@@ -223,6 +243,7 @@ Each analysis must include:
 - OLAP operation shown, such as roll-up, drill-down, slice, dice, or pivot.
 - Result table or chart.
 - Short interpretation of the finding.
+- DBeaver-ready SQL file or script section that can be executed during the demo.
 
 Done when:
 - There are at least 5 polished OLAP queries.
@@ -263,9 +284,13 @@ Slide outline:
 - [ ] Demo instructions.
 
 Demo checklist:
+- [ ] DBeaver opens and connects to the PostgreSQL database.
 - [ ] Database starts correctly.
 - [ ] Warehouse tables are populated.
+- [ ] Schemas `staging`, `reconciled`, and `dw` are visible in DBeaver.
+- [ ] Key tables are ready to show: `fact_trip`, `fact_station_day_hour`, `dim_date`, `dim_station`, `dim_geography`, and `dim_weather`.
 - [ ] Selected OLAP queries run within the available time.
+- [ ] At least one PostGIS geographic enrichment example is ready to show or explain.
 - [ ] Results shown in terminal, database client, notebook, or exported report.
 
 Done when:
@@ -278,6 +303,8 @@ Done when:
 - [ ] Reconciled layer implemented and documented.
 - [ ] DFM completed.
 - [ ] Star/snowflake schema implemented in PostgreSQL.
+- [ ] PostgreSQL/PostGIS environment reproducible.
+- [ ] DBeaver demo connection configured and tested.
 - [ ] ETL scripts run end to end.
 - [ ] At least 3 non-trivial dimensional hierarchies are visible and used.
 - [ ] At least 5 OLAP analyses are implemented and interpreted.
