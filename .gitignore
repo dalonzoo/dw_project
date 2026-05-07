@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Local environment and secrets
+.env
+*.env
+!.env.example
+
+# Data files: keep only placeholders and documentation in Git
+data_raw/*
+!data_raw/.gitkeep
+data_processed/*
+!data_processed/.gitkeep
+
+# Large database outputs
+*.dump
+*.backup
+*.sql.gz
+*.csv.gz
+*.parquet
+*.gpkg
+*.shp
+*.shx
+*.dbf
+*.prj
+*.cpg
+*.geojson
+
+# Reports generated locally
+reports/*
+!reports/.gitkeep
+!reports/README.md
+
+# OS and editor noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# DBeaver local workspace metadata
+.dbeaver/

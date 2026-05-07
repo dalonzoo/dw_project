@@ -10,9 +10,9 @@
 
 ## Current Resume Point
 - Overall status: `DOING`.
-- Next step: start Phase 1 by creating the repository structure, `README.md`, `.gitignore`, dependency notes, and local database configuration plan.
+- Next step: install or expose PostgreSQL command-line tools, create `urban_night_mobility_dw`, run `sql/00_init_database.sql`, and verify the connection in DBeaver.
 - Current phase: Phase 1 - Repository And Environment Setup.
-- Last updated: 2026-05-05.
+- Last updated: 2026-05-07.
 
 ## Project Goal And Grade Strategy
 Build a PostgreSQL/PostGIS data warehouse that analyzes Citi Bike urban night mobility in NYC, enriched with weather, holidays, and geographic boundaries. The project aims for the highest grade by showing:
@@ -92,11 +92,11 @@ Status: `DOING`
 Goal: make the repository reproducible and ready for ETL, SQL, diagrams, and reports.
 
 Tasks:
-- [ ] Create a clean folder structure: `data_raw/`, `data_processed/`, `sql/`, `scripts/`, `docs/`, `diagrams/`, `reports/`.
-- [ ] Add a `README.md` explaining project goal, sources, setup, and execution order.
-- [ ] Add dependency files, preferably `requirements.txt` for Python and notes for PostgreSQL/PostGIS.
-- [ ] Add `.gitignore` rules for raw data, processed data, caches, database dumps, and local secrets.
-- [ ] Decide local database name, schema names, and connection configuration.
+- [x] Create a clean folder structure: `data_raw/`, `data_processed/`, `sql/`, `scripts/`, `docs/`, `diagrams/`, `reports/`.
+- [x] Add a `README.md` explaining project goal, sources, setup, and execution order.
+- [x] Add dependency files, preferably `requirements.txt` for Python and notes for PostgreSQL/PostGIS.
+- [x] Add `.gitignore` rules for raw data, processed data, caches, database dumps, and local secrets.
+- [x] Decide local database name, schema names, and connection configuration.
 - [ ] Install or verify PostgreSQL and enable the PostGIS extension.
 - [ ] Install or verify DBeaver and create a saved connection to the local PostgreSQL database.
 - [ ] Install or verify pgAdmin as a backup administration tool.
@@ -314,6 +314,7 @@ Done when:
 ## Progress Log
 - 2026-05-05: Initial proposal and roadmap prepared while approval was still pending.
 - 2026-05-05: Proposal marked as approved. Current resume point moved to Phase 1: repository and environment setup.
+- 2026-05-07: Added Phase 1 repository skeleton, README, dependency file, ignore rules, database setup notes, source inventory, development workflow, and initial PostgreSQL/PostGIS schema bootstrap SQL. `psql` was not found in PowerShell, so local PostgreSQL installation/PATH verification remains the next checkpoint.
 
 ## Open Questions
 - Decide whether final execution will use all 12 months of 2024 or a reduced final subset if local compute becomes too slow.
