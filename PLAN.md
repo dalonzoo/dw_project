@@ -10,7 +10,7 @@
 
 ## Current Resume Point
 - Overall status: `DOING`.
-- Next step: continue Phase 2 by scripting NYC geographic boundary downloads for NTA/community district and borough polygons.
+- Next step: finish Phase 2 by reviewing source acquisition completeness, then start Phase 3 with staging DDL for holidays, weather, geography, and the January Citi Bike sample.
 - Current phase: Phase 2 - Source Acquisition.
 - Last updated: 2026-05-07.
 
@@ -117,9 +117,9 @@ Tasks:
 - [x] Download or script download of Citi Bike monthly trip files for 2024.
 - [x] Download or script download of NOAA daily weather data for one or more NYC-area stations.
 - [x] Fetch or script fetch of US public holidays from Nager.Date for 2024.
-- [ ] Download NYC NTA/CDTA/community district and borough boundaries.
-- [ ] Create a source inventory table in the README or `docs/source_inventory.md`.
-- [ ] Record file names, source URLs, extraction date, row counts, and known limitations.
+- [x] Download NYC NTA/CDTA/community district and borough boundaries.
+- [x] Create a source inventory table in the README or `docs/source_inventory.md`.
+- [x] Record file names, source URLs, extraction date, row counts, and known limitations.
 
 Done when:
 - Every source has a reproducible acquisition method or a documented manual step.
@@ -321,6 +321,8 @@ Done when:
 - 2026-05-07: Added `scripts/download_citibike.py` for Citi Bike monthly files. The script defaults to one development month and supports `--months all-2024` for final full-year acquisition.
 - 2026-05-07: Ran `scripts/download_citibike.py --months 202401`. Downloaded January 2024 Citi Bike trip data: 369035302-byte ZIP, 2 CSV members, and 1888085 ride rows. This is sufficient for development; full 2024 remains the final target for stronger seasonality and holiday analysis.
 - 2026-05-07: Added and ran `scripts/download_weather_noaa.py`. Downloaded 366 daily NOAA NCEI Daily Summaries rows for Central Park station `GHCND:USW00094728` covering 2024, with temperature, precipitation, snow, wind, and weather-type flag columns.
+- 2026-05-07: Added `scripts/download_nyc_boundaries.py` for NYC Open Data GeoJSON boundary downloads: 2020 NTAs and borough boundaries.
+- 2026-05-07: Ran `scripts/download_nyc_boundaries.py`. Downloaded 262 NTA MultiPolygon features and 5 borough MultiPolygon features. NTA properties include NTA, CDTA, borough, and county fields needed for the geography hierarchy.
 
 ## Open Questions
 - Decide whether final execution will use all 12 months of 2024 or a reduced final subset if local compute becomes too slow.
@@ -329,3 +331,4 @@ Done when:
 - Full-year Citi Bike acquisition is intentionally postponed until the staging/reconciled pipeline works on the January 2024 development sample.
 - Weather condition classes, severity scores, and missing-value rules are intentionally postponed to Phase 4, because they depend on the reconciled weather table design.
 - Additional NYC-area weather stations, such as airport stations, are optional later if Central Park coverage proves insufficient for borough-level interpretation.
+- Station point-in-polygon assignment to NTA/CDTA/borough is intentionally postponed to Phase 4 after station reconciliation creates stable station coordinates.

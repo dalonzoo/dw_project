@@ -73,6 +73,12 @@ Download NOAA daily weather for Central Park:
 .\.venv\Scripts\python scripts\download_weather_noaa.py
 ```
 
+Download NYC geographic boundaries for PostGIS enrichment:
+
+```powershell
+.\.venv\Scripts\python scripts\download_nyc_boundaries.py
+```
+
 Downloaded files are stored under `data_raw/` and are intentionally ignored by Git. Update [docs/source_inventory.md](docs/source_inventory.md) with the row count after each source is acquired.
 
 ## Database Convention
