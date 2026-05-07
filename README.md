@@ -67,6 +67,12 @@ For the final full-year warehouse, use:
 .\.venv\Scripts\python scripts\download_citibike.py --months all-2024
 ```
 
+Download NOAA daily weather for Central Park:
+
+```powershell
+.\.venv\Scripts\python scripts\download_weather_noaa.py
+```
+
 Downloaded files are stored under `data_raw/` and are intentionally ignored by Git. Update [docs/source_inventory.md](docs/source_inventory.md) with the row count after each source is acquired.
 
 ## Database Convention

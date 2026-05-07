@@ -10,7 +10,7 @@
 
 ## Current Resume Point
 - Overall status: `DOING`.
-- Next step: continue Phase 2 by scripting the NOAA daily weather source for one or more NYC-area stations.
+- Next step: continue Phase 2 by scripting NYC geographic boundary downloads for NTA/community district and borough polygons.
 - Current phase: Phase 2 - Source Acquisition.
 - Last updated: 2026-05-07.
 
@@ -115,7 +115,7 @@ Goal: download or document all source datasets needed for the warehouse.
 
 Tasks:
 - [x] Download or script download of Citi Bike monthly trip files for 2024.
-- [ ] Download or script download of NOAA daily weather data for one or more NYC-area stations.
+- [x] Download or script download of NOAA daily weather data for one or more NYC-area stations.
 - [x] Fetch or script fetch of US public holidays from Nager.Date for 2024.
 - [ ] Download NYC NTA/CDTA/community district and borough boundaries.
 - [ ] Create a source inventory table in the README or `docs/source_inventory.md`.
@@ -320,6 +320,12 @@ Done when:
 - 2026-05-07: Ran `scripts/download_holidays.py` for 2024 US public holidays. Downloaded 17 rows into ignored raw data files and recorded extraction metadata in `docs/source_inventory.md`.
 - 2026-05-07: Added `scripts/download_citibike.py` for Citi Bike monthly files. The script defaults to one development month and supports `--months all-2024` for final full-year acquisition.
 - 2026-05-07: Ran `scripts/download_citibike.py --months 202401`. Downloaded January 2024 Citi Bike trip data: 369035302-byte ZIP, 2 CSV members, and 1888085 ride rows. This is sufficient for development; full 2024 remains the final target for stronger seasonality and holiday analysis.
+- 2026-05-07: Added and ran `scripts/download_weather_noaa.py`. Downloaded 366 daily NOAA NCEI Daily Summaries rows for Central Park station `GHCND:USW00094728` covering 2024, with temperature, precipitation, snow, wind, and weather-type flag columns.
 
 ## Open Questions
 - Decide whether final execution will use all 12 months of 2024 or a reduced final subset if local compute becomes too slow.
+
+## Deferred Notes
+- Full-year Citi Bike acquisition is intentionally postponed until the staging/reconciled pipeline works on the January 2024 development sample.
+- Weather condition classes, severity scores, and missing-value rules are intentionally postponed to Phase 4, because they depend on the reconciled weather table design.
+- Additional NYC-area weather stations, such as airport stations, are optional later if Central Park coverage proves insufficient for borough-level interpretation.
