@@ -12,7 +12,13 @@ psql --version
 
 If PowerShell cannot find `psql`, PostgreSQL may not be installed or its `bin` directory may not be in `PATH`.
 
-Common Windows path:
+Verified local Windows path on this machine:
+
+```text
+C:\Program Files\PostgreSQL\18\bin\psql.exe
+```
+
+Common Windows path pattern:
 
 ```text
 C:\Program Files\PostgreSQL\16\bin
@@ -53,7 +59,25 @@ SELECT PostGIS_Version();
 
 This is a useful first live-demo proof: it shows the project is using a real DBMS plus spatial functionality.
 
-## 5. Connection Values
+## 5. DBeaver Connection
+
+DBeaver is installed locally at:
+
+```text
+C:\Users\danie\AppData\Local\DBeaver\dbeaver.exe
+```
+
+Create a new PostgreSQL connection with the values from `.env`:
+
+- Host: `DB_HOST`
+- Port: `DB_PORT`
+- Database: `DB_NAME`
+- Username: `DB_USER`
+- Password: `DB_PASSWORD`
+
+After connecting, expand the database and confirm the `staging`, `reconciled`, `dw`, and `audit` schemas are visible.
+
+## 6. Connection Values
 
 Default local values are documented in `.env.example`.
 

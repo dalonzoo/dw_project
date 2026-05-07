@@ -10,7 +10,7 @@
 
 ## Current Resume Point
 - Overall status: `DOING`.
-- Next step: install or expose PostgreSQL command-line tools, create `urban_night_mobility_dw`, run `sql/00_init_database.sql`, and verify the connection in DBeaver.
+- Next step: create/save the DBeaver connection to `urban_night_mobility_dw`, then start Phase 2 source acquisition with a small reproducible download script.
 - Current phase: Phase 1 - Repository And Environment Setup.
 - Last updated: 2026-05-07.
 
@@ -97,9 +97,9 @@ Tasks:
 - [x] Add dependency files, preferably `requirements.txt` for Python and notes for PostgreSQL/PostGIS.
 - [x] Add `.gitignore` rules for raw data, processed data, caches, database dumps, and local secrets.
 - [x] Decide local database name, schema names, and connection configuration.
-- [ ] Install or verify PostgreSQL and enable the PostGIS extension.
+- [x] Install or verify PostgreSQL and enable the PostGIS extension.
 - [ ] Install or verify DBeaver and create a saved connection to the local PostgreSQL database.
-- [ ] Install or verify pgAdmin as a backup administration tool.
+- [x] Install or verify pgAdmin as a backup administration tool.
 - [ ] Decide the diagram tool to use for DFM and schema diagrams.
 
 Done when:
@@ -315,6 +315,7 @@ Done when:
 - 2026-05-05: Initial proposal and roadmap prepared while approval was still pending.
 - 2026-05-05: Proposal marked as approved. Current resume point moved to Phase 1: repository and environment setup.
 - 2026-05-07: Added Phase 1 repository skeleton, README, dependency file, ignore rules, database setup notes, source inventory, development workflow, and initial PostgreSQL/PostGIS schema bootstrap SQL. `psql` was not found in PowerShell, so local PostgreSQL installation/PATH verification remains the next checkpoint.
+- 2026-05-07: Verified Python 3.10.7, created `.venv`, installed Python ETL dependencies, verified PostgreSQL 18, verified pgAdmin and DBeaver executables, confirmed `.env` is ignored by Git, created/initialized database `urban_night_mobility_dw`, enabled PostGIS, and verified schemas `staging`, `reconciled`, `dw`, and `audit`.
 
 ## Open Questions
 - Decide whether final execution will use all 12 months of 2024 or a reduced final subset if local compute becomes too slow.
