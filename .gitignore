@@ -13,10 +13,16 @@ venv/
 !.env.example
 
 # Data files: keep only placeholders and documentation in Git
-data_raw/*
+data_raw/**
+!data_raw/
 !data_raw/.gitkeep
-data_processed/*
+!data_raw/**/
+!data_raw/**/.gitkeep
+data_processed/**
+!data_processed/
 !data_processed/.gitkeep
+!data_processed/**/
+!data_processed/**/.gitkeep
 
 # Large database outputs
 *.dump

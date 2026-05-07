@@ -10,8 +10,8 @@
 
 ## Current Resume Point
 - Overall status: `DOING`.
-- Next step: create/save the DBeaver connection to `urban_night_mobility_dw`, then start Phase 2 source acquisition with a small reproducible download script.
-- Current phase: Phase 1 - Repository And Environment Setup.
+- Next step: continue Phase 2 by scripting the NOAA daily weather source for one or more NYC-area stations.
+- Current phase: Phase 2 - Source Acquisition.
 - Last updated: 2026-05-07.
 
 ## Project Goal And Grade Strategy
@@ -33,7 +33,7 @@ Build a PostgreSQL/PostGIS data warehouse that analyzes Citi Bike urban night mo
 - ETL stack: Python scripts plus SQL scripts.
 - Main DB/demo GUI: DBeaver connected to PostgreSQL.
 - Backup DB GUI: pgAdmin, mainly as a fallback if DBeaver has issues.
-- Diagram tools: draw.io, dbdiagram.io, or an equivalent ERD/DFM tool.
+- Diagram tools: diagrams.net/draw.io for DFM and architecture diagrams; DBeaver ERD for live physical-schema browsing.
 - Optional analysis/charting layer: Jupyter, Quarto, or exported query results for charts in slides.
 - Main non-trivial dimensions:
   - Time: timestamp -> hour -> part of day -> day -> week -> month -> quarter -> season -> year.
@@ -87,7 +87,7 @@ Done when:
 - If later feedback arrives, update this roadmap with the requested changes before continuing implementation.
 
 ### Phase 1 - Repository And Environment Setup
-Status: `DOING`
+Status: `DONE`
 
 Goal: make the repository reproducible and ready for ETL, SQL, diagrams, and reports.
 
@@ -101,7 +101,7 @@ Tasks:
 - [x] Install or verify DBeaver and create a saved connection to the local PostgreSQL database.
 - [x] Install or verify pgAdmin as a backup administration tool.
 - [x] Decide the diagram tool to use for DFM and schema diagrams.
-(chosen diagram net)
+
 Done when:
 - A new contributor can clone the repo, install dependencies, and understand where each artifact belongs.
 - Raw data is not committed to Git.
@@ -109,14 +109,14 @@ Done when:
 - PostgreSQL can run `CREATE EXTENSION IF NOT EXISTS postgis;`.
 
 ### Phase 2 - Source Acquisition
-Status: `TODO`
+Status: `DOING`
 
 Goal: download or document all source datasets needed for the warehouse.
 
 Tasks:
-- [ ] Download or script download of Citi Bike monthly trip files for 2024.
+- [x] Download or script download of Citi Bike monthly trip files for 2024.
 - [ ] Download or script download of NOAA daily weather data for one or more NYC-area stations.
-- [ ] Fetch or script fetch of US public holidays from Nager.Date for 2024.
+- [x] Fetch or script fetch of US public holidays from Nager.Date for 2024.
 - [ ] Download NYC NTA/CDTA/community district and borough boundaries.
 - [ ] Create a source inventory table in the README or `docs/source_inventory.md`.
 - [ ] Record file names, source URLs, extraction date, row counts, and known limitations.
@@ -316,6 +316,10 @@ Done when:
 - 2026-05-05: Proposal marked as approved. Current resume point moved to Phase 1: repository and environment setup.
 - 2026-05-07: Added Phase 1 repository skeleton, README, dependency file, ignore rules, database setup notes, source inventory, development workflow, and initial PostgreSQL/PostGIS schema bootstrap SQL. `psql` was not found in PowerShell, so local PostgreSQL installation/PATH verification remains the next checkpoint.
 - 2026-05-07: Verified Python 3.10.7, created `.venv`, installed Python ETL dependencies, verified PostgreSQL 18, verified pgAdmin and DBeaver executables, confirmed `.env` is ignored by Git, created/initialized database `urban_night_mobility_dw`, enabled PostGIS, and verified schemas `staging`, `reconciled`, `dw`, and `audit`.
+- 2026-05-07: Closed Phase 1 after DBeaver verification and selected diagrams.net/draw.io as the main diagram tool. Started Phase 2 with a reproducible Nager.Date holiday acquisition script.
+- 2026-05-07: Ran `scripts/download_holidays.py` for 2024 US public holidays. Downloaded 17 rows into ignored raw data files and recorded extraction metadata in `docs/source_inventory.md`.
+- 2026-05-07: Added `scripts/download_citibike.py` for Citi Bike monthly files. The script defaults to one development month and supports `--months all-2024` for final full-year acquisition.
+- 2026-05-07: Ran `scripts/download_citibike.py --months 202401`. Downloaded January 2024 Citi Bike trip data: 369035302-byte ZIP, 2 CSV members, and 1888085 ride rows. This is sufficient for development; full 2024 remains the final target for stronger seasonality and holiday analysis.
 
 ## Open Questions
 - Decide whether final execution will use all 12 months of 2024 or a reduced final subset if local compute becomes too slow.

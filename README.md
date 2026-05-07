@@ -47,6 +47,28 @@ pip install -r requirements.txt
 
 Then create the local PostgreSQL database and schemas using the instructions in [docs/database_setup.md](docs/database_setup.md).
 
+## Source Acquisition
+
+Download the small holiday source first:
+
+```powershell
+.\.venv\Scripts\python scripts\download_holidays.py --year 2024 --country-code US
+```
+
+Download one Citi Bike month for development:
+
+```powershell
+.\.venv\Scripts\python scripts\download_citibike.py --months 202401
+```
+
+For the final full-year warehouse, use:
+
+```powershell
+.\.venv\Scripts\python scripts\download_citibike.py --months all-2024
+```
+
+Downloaded files are stored under `data_raw/` and are intentionally ignored by Git. Update [docs/source_inventory.md](docs/source_inventory.md) with the row count after each source is acquired.
+
 ## Database Convention
 
 Default local database name: `urban_night_mobility_dw`
