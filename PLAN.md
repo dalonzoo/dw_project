@@ -98,10 +98,10 @@ Tasks:
 - [x] Add `.gitignore` rules for raw data, processed data, caches, database dumps, and local secrets.
 - [x] Decide local database name, schema names, and connection configuration.
 - [x] Install or verify PostgreSQL and enable the PostGIS extension.
-- [ ] Install or verify DBeaver and create a saved connection to the local PostgreSQL database.
+- [x] Install or verify DBeaver and create a saved connection to the local PostgreSQL database.
 - [x] Install or verify pgAdmin as a backup administration tool.
-- [ ] Decide the diagram tool to use for DFM and schema diagrams.
-
+- [x] Decide the diagram tool to use for DFM and schema diagrams.
+(chosen diagram net)
 Done when:
 - A new contributor can clone the repo, install dependencies, and understand where each artifact belongs.
 - Raw data is not committed to Git.
