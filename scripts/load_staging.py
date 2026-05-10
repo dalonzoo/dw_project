@@ -151,7 +151,11 @@ def load_weather(input_dir: Path) -> None:
 
 
 def load_holidays(input_dir: Path) -> None:
-    files = sorted(input_dir.glob("*_public_holidays_*.json"))
+    files = [
+        path
+        for path in sorted(input_dir.glob("*_public_holidays_*.json"))
+        if not path.name.endswith(".metadata.json")
+    ]
     if not files:
         raise FileNotFoundError(f"No holiday JSON files found in {input_dir}")
 
