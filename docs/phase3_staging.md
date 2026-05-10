@@ -85,6 +85,12 @@ python scripts/load_staging.py --dataset geography
 psql urban_night_mobility_dw -f sql/staging/02_validate_staging_loads.sql
 ```
 
+## Phase 3 Validation Note
+
+The staging validation found 1,160 Citi Bike rows with missing start coordinates.
+
+These rows are intentionally preserved in the staging layer because staging should retain raw source records with minimal transformation. They will be handled in Phase 4 during reconciled-layer cleaning, either by assigning controlled unknown geography values or excluding them from geography-dependent analysis.
+
 ## Git policy
 
 Commit SQL scripts, ETL scripts, documentation, and dependency files.
