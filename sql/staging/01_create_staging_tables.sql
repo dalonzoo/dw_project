@@ -19,6 +19,7 @@ CREATE TABLE IF NOT EXISTS staging.citibike_trip_raw (
     end_lng DOUBLE PRECISION,
     member_casual TEXT,
     source_file TEXT,
+    source_period TEXT,
     ingestion_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -42,6 +43,7 @@ CREATE TABLE IF NOT EXISTS staging.weather_raw (
     wt03 INTEGER,
     wt08 INTEGER,
     source_file TEXT,
+    source_period TEXT,
     ingestion_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -56,6 +58,7 @@ CREATE TABLE IF NOT EXISTS staging.holiday_raw (
     launch_year INTEGER,
     holiday_types JSONB,
     source_file TEXT,
+    source_period TEXT,
     ingestion_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -66,6 +69,7 @@ CREATE TABLE IF NOT EXISTS staging.nyc_nta_raw (
     properties JSONB,
     geom GEOMETRY(MULTIPOLYGON, 4326),
     source_file TEXT,
+    source_period TEXT,
     ingestion_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -75,6 +79,7 @@ CREATE TABLE IF NOT EXISTS staging.nyc_borough_raw (
     properties JSONB,
     geom GEOMETRY(MULTIPOLYGON, 4326),
     source_file TEXT,
+    source_period TEXT,
     ingestion_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -95,3 +100,18 @@ CREATE INDEX IF NOT EXISTS idx_nyc_nta_raw_geom
 
 CREATE INDEX IF NOT EXISTS idx_nyc_borough_raw_geom
     ON staging.nyc_borough_raw USING GIST (geom);
+
+ALTER TABLE staging.citibike_trip_raw
+    ADD COLUMN IF NOT EXISTS source_period TEXT;
+
+ALTER TABLE staging.weather_raw
+    ADD COLUMN IF NOT EXISTS source_period TEXT;
+
+ALTER TABLE staging.holiday_raw
+    ADD COLUMN IF NOT EXISTS source_period TEXT;
+
+ALTER TABLE staging.nyc_nta_raw
+    ADD COLUMN IF NOT EXISTS source_period TEXT;
+
+ALTER TABLE staging.nyc_borough_raw
+    ADD COLUMN IF NOT EXISTS source_period TEXT;
