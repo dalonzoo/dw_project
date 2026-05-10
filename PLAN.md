@@ -126,7 +126,7 @@ Done when:
 - Every source has a row count and a short semantic description.
 
 ### Phase 3 - Staging Layer
-Status: `DOING`
+Status: `DONE`
 
 Goal: load raw source data into database staging tables with minimal transformation.
 
@@ -144,12 +144,12 @@ Tasks:
 - [x] Add load metadata: source file, load timestamp, and source period where applicable.
 - [x] Produce staging row-count checks.
 - [x] Add Phase 3 staging documentation to the repository.
-- [ ] Write or finalize loading scripts for CSV/JSON/geospatial files.
-- [ ] Run staging DDL locally from the repository.
-- [ ] Verify all staging tables exist in PostgreSQL/PostGIS.
-- [ ] Load the January 2024 Citi Bike development sample.
-- [ ] Load weather, holiday, NTA, and borough source files.
-- [ ] Run validation SQL and compare row counts against source inventory.
+- [x] Write or finalize loading scripts for CSV/JSON/geospatial files.
+- [x] Run staging DDL locally from the repository.
+- [x] Verify all staging tables exist in PostgreSQL/PostGIS.
+- [x] Load the January 2024 Citi Bike development sample.
+- [x] Load weather, holiday, NTA, and borough source files.
+- [x] Run validation SQL and compare row counts against source inventory.
 
 Done when:
 - All sources load into staging without manual database edits.
@@ -330,7 +330,7 @@ Done when:
 - 2026-05-07: Added and ran `scripts/download_weather_noaa.py`. Downloaded 366 daily NOAA NCEI Daily Summaries rows for Central Park station `GHCND:USW00094728` covering 2024, with temperature, precipitation, snow, wind, and weather-type flag columns.
 - 2026-05-07: Added `scripts/download_nyc_boundaries.py` for NYC Open Data GeoJSON boundary downloads: 2020 NTAs and borough boundaries.
 - 2026-05-07: Ran `scripts/download_nyc_boundaries.py`. Downloaded 262 NTA MultiPolygon features and 5 borough MultiPolygon features. NTA properties include NTA, CDTA, borough, and county fields needed for the geography hierarchy.
-- 2026-05-10: Added Phase 3 staging implementation files to the repository, including staging DDL, staging validation SQL, an ETL loader scaffold, and Phase 3 documentation. Updated README to reflect Phase 3. Local PostgreSQL/PostGIS setup was verified on macOS after installing/enabling PostGIS. Next checkpoint is to run the committed staging SQL locally, verify all `staging.*` tables, and then begin loading the January 2024 Citi Bike development sample.
+- 2026-05-10: Completed and validated Phase 3 staging implementation locally on PostgreSQL 17/PostGIS 3.6. Ran staging DDL from the repository, loaded January 2024 Citi Bike trips, NOAA 2024 weather, 2024 US holidays, NYC 2020 NTA boundaries, and NYC borough boundaries into PostgreSQL/PostGIS staging tables. Validation confirmed expected row counts: 1,888,085 Citi Bike trips, 366 weather rows, 17 holiday rows, 262 NTA features, and 5 borough features. Duplicate ride IDs, invalid time ranges, invalid NTA geometries, and invalid borough geometries were all zero. The 1,160 Citi Bike rows with missing start coordinates are preserved in staging and deferred to Phase 4 cleaning.
 
 ## Open Questions
 - Decide whether final execution will use all 12 months of 2024 or a reduced final subset if local compute becomes too slow.
