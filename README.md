@@ -81,6 +81,22 @@ Download NYC geographic boundaries for PostGIS enrichment:
 
 Downloaded files are stored under `data_raw/` and are intentionally ignored by Git. Update [docs/source_inventory.md](docs/source_inventory.md) with the row count after each source is acquired.
 
+## Staging And Reconciled Builds
+
+Load all downloaded raw sources into staging:
+
+```powershell
+.\.venv\Scripts\python scripts\load_staging.py --create-tables --dataset all
+```
+
+Build and validate the reconciled layer:
+
+```powershell
+.\.venv\Scripts\python scripts\build_reconciled.py
+```
+
+The reconciled layer is documented in [docs/phase4_reconciled.md](docs/phase4_reconciled.md).
+
 ## Database Convention
 
 Default local database name: `urban_night_mobility_dw`
@@ -107,4 +123,6 @@ See [docs/development_workflow.md](docs/development_workflow.md) for the exact G
 
 ## Current Status
 
-Implementation has started with Phase 1: repository and environment setup. The next major milestone is verifying the local PostgreSQL/PostGIS installation and connecting DBeaver to the project database.
+Phase 4 is implemented for the January 2024 development sample. Staging is loaded, the reconciled layer is built, and validation confirms that all Citi Bike staging rows are accounted for as either accepted trips or documented rejections.
+
+The next major milestone is Phase 5: DFM and warehouse design.

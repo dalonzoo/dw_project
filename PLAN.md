@@ -10,9 +10,9 @@
 
 ## Current Resume Point
 - Overall status: `DOING`.
-- Next step: build the project locally from the updated repository by running the Phase 3 staging DDL, verifying all staging tables, and then loading the January 2024 Citi Bike development sample.
-- Current phase: Phase 3 - Staging Layer.
-- Last updated: 2026-05-10.
+- Next step: design the Phase 5 DFM and physical warehouse schema from the completed reconciled layer.
+- Current phase: Phase 5 - DFM And Warehouse Design.
+- Last updated: 2026-05-24.
 
 ## Project Goal And Grade Strategy
 Build a PostgreSQL/PostGIS data warehouse that analyzes Citi Bike urban night mobility in NYC, enriched with weather, holidays, and geographic boundaries. The project aims for the highest grade by showing:
@@ -157,7 +157,7 @@ Done when:
 
 
 ### Phase 4 - Reconciled Layer
-Status: `TODO`
+Status: `DONE`
 
 Goal: convert raw source tables into clean, semantically consistent relational tables.
 
@@ -169,13 +169,13 @@ Expected reconciled entities:
 - Geographic areas with NTA/CDTA/community district, borough, and city hierarchy.
 
 Tasks:
-- [ ] Define cleaning rules for invalid trips: missing timestamps, end before start, impossible coordinates, missing station IDs, and extreme durations.
-- [ ] Derive trip duration, approximate distance, day/night category, weekend flag, and flow direction.
-- [ ] Build station reconciliation from observed start/end stations.
-- [ ] Use PostGIS point-in-polygon joins to assign stations to geographic areas.
-- [ ] Derive holiday eve, holiday, post-holiday, bridge day, and long-weekend attributes.
-- [ ] Derive weather class and weather severity score.
-- [ ] Document every exclusion and transformation rule.
+- [x] Define cleaning rules for invalid trips: missing timestamps, end before start, impossible coordinates, missing station IDs, and extreme durations.
+- [x] Derive trip duration, approximate distance, day/night category, weekend flag, and flow direction.
+- [x] Build station reconciliation from observed start/end stations.
+- [x] Use PostGIS point-in-polygon joins to assign stations to geographic areas.
+- [x] Derive holiday eve, holiday, post-holiday, bridge day, and long-weekend attributes.
+- [x] Derive weather class and weather severity score.
+- [x] Document every exclusion and transformation rule.
 
 Done when:
 - Reconciled tables have primary keys and foreign keys where appropriate.
@@ -307,7 +307,7 @@ Done when:
 
 ## Acceptance Checklist
 - [x] Proposal approved.
-- [ ] Reconciled layer implemented and documented.
+- [x] Reconciled layer implemented and documented.
 - [ ] DFM completed.
 - [ ] Star/snowflake schema implemented in PostgreSQL.
 - [ ] PostgreSQL/PostGIS environment reproducible.
@@ -331,12 +331,11 @@ Done when:
 - 2026-05-07: Added `scripts/download_nyc_boundaries.py` for NYC Open Data GeoJSON boundary downloads: 2020 NTAs and borough boundaries.
 - 2026-05-07: Ran `scripts/download_nyc_boundaries.py`. Downloaded 262 NTA MultiPolygon features and 5 borough MultiPolygon features. NTA properties include NTA, CDTA, borough, and county fields needed for the geography hierarchy.
 - 2026-05-10: Completed and validated Phase 3 staging implementation locally on PostgreSQL 17/PostGIS 3.6. Ran staging DDL from the repository, loaded January 2024 Citi Bike trips, NOAA 2024 weather, 2024 US holidays, NYC 2020 NTA boundaries, and NYC borough boundaries into PostgreSQL/PostGIS staging tables. Validation confirmed expected row counts: 1,888,085 Citi Bike trips, 366 weather rows, 17 holiday rows, 262 NTA features, and 5 borough features. Duplicate ride IDs, invalid time ranges, invalid NTA geometries, and invalid borough geometries were all zero. The 1,160 Citi Bike rows with missing start coordinates are preserved in staging and deferred to Phase 4 cleaning.
+- 2026-05-24: Completed Phase 4 reconciled implementation for the January 2024 development sample. Added `sql/reconciled/01_create_reconciled_tables.sql`, `02_load_reconciled.sql`, `03_validate_reconciled.sql`, `scripts/build_reconciled.py`, and `docs/phase4_reconciled.md`. Local validation confirmed 1,881,951 accepted trips and 6,134 rejected staging trips, accounting for all 1,888,085 Citi Bike staging rows. Built 2,262 reconciled stations, assigned 2,223 to NYC NTAs, classified 39 as outside NYC or unknown, and derived calendar, weather, distance, night-trip, weekend, and flow-direction attributes.
 
 ## Open Questions
 - Decide whether final execution will use all 12 months of 2024 or a reduced final subset if local compute becomes too slow.
 
 ## Deferred Notes
-- Full-year Citi Bike acquisition is intentionally postponed until the staging/reconciled pipeline works on the January 2024 development sample.
-- Weather condition classes, severity scores, and missing-value rules are intentionally postponed to Phase 4, because they depend on the reconciled weather table design.
+- Full-year Citi Bike acquisition is intentionally postponed until the DFM and warehouse-loading scripts are stable on the January 2024 development sample.
 - Additional NYC-area weather stations, such as airport stations, are optional later if Central Park coverage proves insufficient for borough-level interpretation.
-- Station point-in-polygon assignment to NTA/CDTA/borough is intentionally postponed to Phase 4 after station reconciliation creates stable station coordinates.
