@@ -10,8 +10,8 @@
 
 ## Current Resume Point
 - Overall status: `DOING`.
-- Next step: populate the Phase 6 warehouse dimensions and facts from the completed reconciled layer.
-- Current phase: Phase 6 - Warehouse Population.
+- Next step: create Phase 7 OLAP SQL analyses on the populated dimensional warehouse.
+- Current phase: Phase 7 - OLAP Analysis.
 - Last updated: 2026-06-04.
 
 ## Project Goal And Grade Strategy
@@ -203,7 +203,7 @@ Done when:
 - The schema choice can be defended during the presentation.
 
 ### Phase 6 - Warehouse Population
-Status: `TODO`
+Status: `DONE`
 
 Goal: populate dimensions and facts from the reconciled layer.
 
@@ -220,12 +220,12 @@ Expected warehouse tables:
 - `fact_station_day_hour`
 
 Tasks:
-- [ ] Populate dimensions with surrogate keys.
-- [ ] Populate `fact_trip` at ride grain.
-- [ ] Populate `fact_station_day_hour` for demo-friendly OLAP.
-- [ ] Add controlled `unknown` dimension rows where necessary.
-- [ ] Verify that fact foreign keys resolve correctly.
-- [ ] Compare staging/reconciled counts against fact counts after exclusions.
+- [x] Populate dimensions with surrogate keys.
+- [x] Populate `fact_trip` at ride grain.
+- [x] Populate `fact_station_day_hour` for demo-friendly OLAP.
+- [x] Add controlled `unknown` dimension rows where necessary.
+- [x] Verify that fact foreign keys resolve correctly.
+- [x] Compare staging/reconciled counts against fact counts after exclusions.
 
 Done when:
 - Warehouse tables are populated from scripts end to end.
@@ -312,8 +312,8 @@ Done when:
 - [x] Star/snowflake schema implemented in PostgreSQL.
 - [ ] PostgreSQL/PostGIS environment reproducible.
 - [ ] DBeaver demo connection configured and tested.
-- [ ] ETL scripts run end to end.
-- [ ] At least 3 non-trivial dimensional hierarchies are visible and used.
+- [x] ETL scripts run end to end.
+- [x] At least 3 non-trivial dimensional hierarchies are visible and used.
 - [ ] At least 5 OLAP analyses are implemented and interpreted.
 - [ ] README explains setup, data acquisition, ETL, warehouse build, and analysis.
 - [ ] Slides and live demo are ready.
@@ -333,6 +333,7 @@ Done when:
 - 2026-05-10: Completed and validated Phase 3 staging implementation locally on PostgreSQL 17/PostGIS 3.6. Ran staging DDL from the repository, loaded January 2024 Citi Bike trips, NOAA 2024 weather, 2024 US holidays, NYC 2020 NTA boundaries, and NYC borough boundaries into PostgreSQL/PostGIS staging tables. Validation confirmed expected row counts: 1,888,085 Citi Bike trips, 366 weather rows, 17 holiday rows, 262 NTA features, and 5 borough features. Duplicate ride IDs, invalid time ranges, invalid NTA geometries, and invalid borough geometries were all zero. The 1,160 Citi Bike rows with missing start coordinates are preserved in staging and deferred to Phase 4 cleaning.
 - 2026-05-24: Completed Phase 4 reconciled implementation for the January 2024 development sample. Added `sql/reconciled/01_create_reconciled_tables.sql`, `02_load_reconciled.sql`, `03_validate_reconciled.sql`, `scripts/build_reconciled.py`, and `docs/phase4_reconciled.md`. Local validation confirmed 1,881,951 accepted trips and 6,134 rejected staging trips, accounting for all 1,888,085 Citi Bike staging rows. Built 2,262 reconciled stations, assigned 2,223 to NYC NTAs, classified 39 as outside NYC or unknown, and derived calendar, weather, distance, night-trip, weekend, and flow-direction attributes.
 - 2026-06-04: Completed Phase 5 DFM and warehouse design. Added `docs/modeling_notes.md`, `docs/phase5_warehouse_design.md`, `diagrams/phase5_dfm.drawio`, `diagrams/phase5_physical_schema.drawio`, `sql/dw/01_create_warehouse_tables.sql`, `sql/dw/02_validate_warehouse_schema.sql`, and `scripts/build_warehouse_schema.py`. Ran the warehouse schema builder locally and validated 10 `dw` tables, 18 foreign keys, and OLAP indexes. Current resume point moved to Phase 6 warehouse population.
+- 2026-06-04: Completed Phase 6 warehouse population for the January 2024 development sample. Added `sql/dw/03_load_warehouse.sql`, `sql/dw/04_validate_warehouse_load.sql`, `scripts/build_warehouse.py`, and `docs/phase6_warehouse_population.md`. Local validation populated 1,881,951 ride-grain facts and 801,443 station-day-hour aggregate facts. Fact counts reconcile exactly with `reconciled.trip`, aggregate starts and ends both sum to 1,881,951, and night-trip totals match at 285,097. Current resume point moved to Phase 7 OLAP analysis.
 
 ## Open Questions
 - Decide whether final execution will use all 12 months of 2024 or a reduced final subset if local compute becomes too slow.

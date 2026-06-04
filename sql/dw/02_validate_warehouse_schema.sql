@@ -22,7 +22,7 @@ ORDER BY table_name;
 
 SELECT
     table_name,
-    COUNT(*) AS columns
+    COUNT(*) AS column_count
 FROM information_schema.columns
 WHERE table_schema = 'dw'
 GROUP BY table_name
@@ -47,4 +47,3 @@ SELECT
 FROM pg_indexes
 WHERE schemaname = 'dw'
 ORDER BY tablename, indexname;
-

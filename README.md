@@ -105,6 +105,14 @@ Create and validate the dimensional warehouse schema:
 
 The warehouse design is documented in [docs/phase5_warehouse_design.md](docs/phase5_warehouse_design.md) and [docs/modeling_notes.md](docs/modeling_notes.md).
 
+Build, populate, and validate the dimensional warehouse:
+
+```powershell
+.\.venv\Scripts\python scripts\build_warehouse.py
+```
+
+The warehouse population is documented in [docs/phase6_warehouse_population.md](docs/phase6_warehouse_population.md).
+
 ## Database Convention
 
 Default local database name: `urban_night_mobility_dw`
@@ -131,6 +139,6 @@ See [docs/development_workflow.md](docs/development_workflow.md) for the exact G
 
 ## Current Status
 
-Phase 5 is implemented for the January 2024 development sample. Staging is loaded, the reconciled layer is built, and the `dw` dimensional warehouse schema has been created and validated locally.
+Phase 6 is implemented for the January 2024 development sample. Staging is loaded, the reconciled layer is built, and the `dw` dimensional warehouse has been populated and validated locally.
 
-The next major milestone is Phase 6: warehouse population.
+The next major milestone is Phase 7: OLAP analysis.
