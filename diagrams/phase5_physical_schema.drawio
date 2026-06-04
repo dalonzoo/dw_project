@@ -1,0 +1,77 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Phase 5 Physical Schema">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="fact_trip" value="dw.fact_trip&#xa;PK fact_trip_key&#xa;UK ride_id&#xa;&#xa;FK start/end date&#xa;FK start/end time&#xa;FK event, weather&#xa;FK start/end station&#xa;FK start/end geography&#xa;FK user, rideable&#xa;&#xa;Measures and flow indicators" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="650" y="360" width="320" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="dim_date" value="dw.dim_date&#xa;PK date_key&#xa;UK date_value&#xa;year, season, quarter, month, week" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="90" y="80" width="260" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="dim_time" value="dw.dim_time&#xa;PK time_key&#xa;UK hour_number&#xa;part_of_day, day_night_class" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="420" y="80" width="260" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="dim_calendar_event" value="dw.dim_calendar_event&#xa;PK calendar_event_key&#xa;UK date_value&#xa;holiday_window, long_weekend flags" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="760" y="80" width="310" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="dim_weather" value="dw.dim_weather&#xa;PK weather_key&#xa;UK observation_date&#xa;condition_class, severity, weather measures" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1150" y="80" width="310" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="dim_station" value="dw.dim_station&#xa;PK station_key&#xa;UK station_id&#xa;FK geography_key&#xa;coordinates, assignment status" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="130" y="400" width="300" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="dim_geography" value="dw.dim_geography&#xa;PK geography_key&#xa;UK geography_code&#xa;NTA, CDTA, borough, city&#xa;PostGIS geom" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="120" y="720" width="320" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="dim_user_type" value="dw.dim_user_type&#xa;PK user_type_key&#xa;UK rider_type" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="690" y="780" width="240" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="dim_rideable_type" value="dw.dim_rideable_type&#xa;PK rideable_type_key&#xa;UK rideable_type" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="780" width="260" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="agg" value="dw.fact_station_day_hour&#xa;PK fact_station_day_hour_key&#xa;UK station + date + time&#xa;&#xa;FK station, date, time, event, weather&#xa;Measures: starts, ends, net_flow" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="410" width="330" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="dim_date" target="fact_trip" style="endArrow=block;html=1;rounded=0;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="dim_time" target="fact_trip" style="endArrow=block;html=1;rounded=0;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="dim_calendar_event" target="fact_trip" style="endArrow=block;html=1;rounded=0;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="dim_weather" target="fact_trip" style="endArrow=block;html=1;rounded=0;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="dim_station" target="fact_trip" style="endArrow=block;html=1;rounded=0;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="dim_geography" target="fact_trip" style="endArrow=block;html=1;rounded=0;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="dim_user_type" target="fact_trip" style="endArrow=block;html=1;rounded=0;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="dim_rideable_type" target="fact_trip" style="endArrow=block;html=1;rounded=0;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="dim_station" target="dim_geography" value="station geography FK" style="endArrow=block;html=1;rounded=0;dashed=1;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="agg" target="dim_station" style="endArrow=block;html=1;rounded=0;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" edge="1" parent="1" source="agg" target="dim_date" style="endArrow=block;html=1;rounded=0;dashed=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e12" edge="1" parent="1" source="agg" target="dim_time" style="endArrow=block;html=1;rounded=0;dashed=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
+

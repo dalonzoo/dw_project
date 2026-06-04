@@ -7,7 +7,7 @@ The project is organized as a reproducible data warehousing pipeline:
 1. Source acquisition into `data_raw/`
 2. Minimal loading into PostgreSQL staging tables
 3. Cleaning and integration into a reconciled relational layer
-4. Dimensional warehouse population
+4. Dimensional warehouse schema and population
 5. OLAP SQL analysis and presentation demo
 
 ## Repository Structure
@@ -81,7 +81,7 @@ Download NYC geographic boundaries for PostGIS enrichment:
 
 Downloaded files are stored under `data_raw/` and are intentionally ignored by Git. Update [docs/source_inventory.md](docs/source_inventory.md) with the row count after each source is acquired.
 
-## Staging And Reconciled Builds
+## Staging, Reconciled, And Warehouse Builds
 
 Load all downloaded raw sources into staging:
 
@@ -96,6 +96,14 @@ Build and validate the reconciled layer:
 ```
 
 The reconciled layer is documented in [docs/phase4_reconciled.md](docs/phase4_reconciled.md).
+
+Create and validate the dimensional warehouse schema:
+
+```powershell
+.\.venv\Scripts\python scripts\build_warehouse_schema.py
+```
+
+The warehouse design is documented in [docs/phase5_warehouse_design.md](docs/phase5_warehouse_design.md) and [docs/modeling_notes.md](docs/modeling_notes.md).
 
 ## Database Convention
 
@@ -123,6 +131,6 @@ See [docs/development_workflow.md](docs/development_workflow.md) for the exact G
 
 ## Current Status
 
-Phase 4 is implemented for the January 2024 development sample. Staging is loaded, the reconciled layer is built, and validation confirms that all Citi Bike staging rows are accounted for as either accepted trips or documented rejections.
+Phase 5 is implemented for the January 2024 development sample. Staging is loaded, the reconciled layer is built, and the `dw` dimensional warehouse schema has been created and validated locally.
 
-The next major milestone is Phase 5: DFM and warehouse design.
+The next major milestone is Phase 6: warehouse population.

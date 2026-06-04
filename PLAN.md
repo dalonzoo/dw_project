@@ -10,9 +10,9 @@
 
 ## Current Resume Point
 - Overall status: `DOING`.
-- Next step: design the Phase 5 DFM and physical warehouse schema from the completed reconciled layer.
-- Current phase: Phase 5 - DFM And Warehouse Design.
-- Last updated: 2026-05-24.
+- Next step: populate the Phase 6 warehouse dimensions and facts from the completed reconciled layer.
+- Current phase: Phase 6 - Warehouse Population.
+- Last updated: 2026-06-04.
 
 ## Project Goal And Grade Strategy
 Build a PostgreSQL/PostGIS data warehouse that analyzes Citi Bike urban night mobility in NYC, enriched with weather, holidays, and geographic boundaries. The project aims for the highest grade by showing:
@@ -183,19 +183,19 @@ Done when:
 - The reconciled layer can be explained independently from the warehouse.
 
 ### Phase 5 - DFM And Warehouse Design
-Status: `TODO`
+Status: `DONE`
 
 Goal: produce the conceptual DFM and the physical star/snowflake schema.
 
 Tasks:
-- [ ] Draw the DFM with `fact_trip` at the center.
-- [ ] Show measures: trip count, duration, approximate distance, late-night indicator, member/casual indicators, and flow contribution.
-- [ ] Show non-trivial Time, Calendar/Event, Geography, and Weather hierarchies.
-- [ ] Decide which dimensions are denormalized and which are snowflaked.
-- [ ] Motivate the star/snowflake choice in `docs/modeling_notes.md`.
-- [ ] Write SQL DDL for the warehouse schema.
-- [ ] Add indexes for common OLAP paths.
-- [ ] Export final diagrams into `diagrams/` and reference them from the README/slides.
+- [x] Draw the DFM with `fact_trip` at the center.
+- [x] Show measures: trip count, duration, approximate distance, late-night indicator, member/casual indicators, and flow contribution.
+- [x] Show non-trivial Time, Calendar/Event, Geography, and Weather hierarchies.
+- [x] Decide which dimensions are denormalized and which are snowflaked.
+- [x] Motivate the star/snowflake choice in `docs/modeling_notes.md`.
+- [x] Write SQL DDL for the warehouse schema.
+- [x] Add indexes for common OLAP paths.
+- [x] Export final diagrams into `diagrams/` and reference them from the README/slides.
 
 Done when:
 - The DFM diagram and physical schema are consistent.
@@ -308,8 +308,8 @@ Done when:
 ## Acceptance Checklist
 - [x] Proposal approved.
 - [x] Reconciled layer implemented and documented.
-- [ ] DFM completed.
-- [ ] Star/snowflake schema implemented in PostgreSQL.
+- [x] DFM completed.
+- [x] Star/snowflake schema implemented in PostgreSQL.
 - [ ] PostgreSQL/PostGIS environment reproducible.
 - [ ] DBeaver demo connection configured and tested.
 - [ ] ETL scripts run end to end.
@@ -332,6 +332,7 @@ Done when:
 - 2026-05-07: Ran `scripts/download_nyc_boundaries.py`. Downloaded 262 NTA MultiPolygon features and 5 borough MultiPolygon features. NTA properties include NTA, CDTA, borough, and county fields needed for the geography hierarchy.
 - 2026-05-10: Completed and validated Phase 3 staging implementation locally on PostgreSQL 17/PostGIS 3.6. Ran staging DDL from the repository, loaded January 2024 Citi Bike trips, NOAA 2024 weather, 2024 US holidays, NYC 2020 NTA boundaries, and NYC borough boundaries into PostgreSQL/PostGIS staging tables. Validation confirmed expected row counts: 1,888,085 Citi Bike trips, 366 weather rows, 17 holiday rows, 262 NTA features, and 5 borough features. Duplicate ride IDs, invalid time ranges, invalid NTA geometries, and invalid borough geometries were all zero. The 1,160 Citi Bike rows with missing start coordinates are preserved in staging and deferred to Phase 4 cleaning.
 - 2026-05-24: Completed Phase 4 reconciled implementation for the January 2024 development sample. Added `sql/reconciled/01_create_reconciled_tables.sql`, `02_load_reconciled.sql`, `03_validate_reconciled.sql`, `scripts/build_reconciled.py`, and `docs/phase4_reconciled.md`. Local validation confirmed 1,881,951 accepted trips and 6,134 rejected staging trips, accounting for all 1,888,085 Citi Bike staging rows. Built 2,262 reconciled stations, assigned 2,223 to NYC NTAs, classified 39 as outside NYC or unknown, and derived calendar, weather, distance, night-trip, weekend, and flow-direction attributes.
+- 2026-06-04: Completed Phase 5 DFM and warehouse design. Added `docs/modeling_notes.md`, `docs/phase5_warehouse_design.md`, `diagrams/phase5_dfm.drawio`, `diagrams/phase5_physical_schema.drawio`, `sql/dw/01_create_warehouse_tables.sql`, `sql/dw/02_validate_warehouse_schema.sql`, and `scripts/build_warehouse_schema.py`. Ran the warehouse schema builder locally and validated 10 `dw` tables, 18 foreign keys, and OLAP indexes. Current resume point moved to Phase 6 warehouse population.
 
 ## Open Questions
 - Decide whether final execution will use all 12 months of 2024 or a reduced final subset if local compute becomes too slow.
