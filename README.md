@@ -136,7 +136,7 @@ Run the Phase 8 quality checks after the warehouse has been built:
 The same checks can be executed directly in DBeaver or `psql`:
 
 ```powershell
-.\.venv\Scripts\psql -d urban_night_mobility_dw -v ON_ERROR_STOP=1 -f sql\quality\01_quality_checks.sql
+psql -d urban_night_mobility_dw -v ON_ERROR_STOP=1 -f sql\quality\01_quality_checks.sql
 ```
 
 The quality checkpoint is documented in [docs/phase8_quality_reproducibility.md](docs/phase8_quality_reproducibility.md).
