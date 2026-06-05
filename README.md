@@ -120,7 +120,7 @@ The warehouse population is documented in [docs/phase6_warehouse_population.md](
 Run the Phase 7 OLAP analysis queries:
 
 ```powershell
-.\.venv\Scripts\psql -d urban_night_mobility_dw -v ON_ERROR_STOP=1 -f sql\olap\01_olap_analysis.sql
+psql -d urban_night_mobility_dw -v ON_ERROR_STOP=1 -f sql\olap\01_olap_analysis.sql
 ```
 
 The OLAP analysis is documented in [docs/phase7_olap_analysis.md](docs/phase7_olap_analysis.md).
