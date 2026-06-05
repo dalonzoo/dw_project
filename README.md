@@ -8,7 +8,9 @@ The project is organized as a reproducible data warehousing pipeline:
 2. Minimal loading into PostgreSQL staging tables
 3. Cleaning and integration into a reconciled relational layer
 4. Dimensional warehouse schema and population
-5. OLAP SQL analysis and presentation demo
+5. OLAP SQL analysis
+6. Quality checks and reproducibility validation
+7. Presentation demo
 
 ## Repository Structure
 
@@ -117,9 +119,27 @@ The warehouse population is documented in [docs/phase6_warehouse_population.md](
 
 Run the Phase 7 OLAP analysis queries:
 
-powershell
+```powershell
 .\.venv\Scripts\psql -d urban_night_mobility_dw -v ON_ERROR_STOP=1 -f sql\olap\01_olap_analysis.sql
+```
 
+The OLAP analysis is documented in [docs/phase7_olap_analysis.md](docs/phase7_olap_analysis.md).
+
+## Quality Checks And Reproducibility
+
+Run the Phase 8 quality checks after the warehouse has been built:
+
+```powershell
+.\.venv\Scripts\python scripts\run_quality_checks.py
+```
+
+The same checks can be executed directly in DBeaver or `psql`:
+
+```powershell
+.\.venv\Scripts\psql -d urban_night_mobility_dw -v ON_ERROR_STOP=1 -f sql\quality\01_quality_checks.sql
+```
+
+The quality checkpoint is documented in [docs/phase8_quality_reproducibility.md](docs/phase8_quality_reproducibility.md).
 
 ## Database Convention
 
@@ -147,8 +167,6 @@ See [docs/development_workflow.md](docs/development_workflow.md) for the exact G
 
 ## Current Status
 
-## Current Status
+Phase 8 is implemented for the January 2024 development sample. Staging, reconciled, and warehouse layers have been built; Phase 7 OLAP analysis is documented; and Phase 8 quality checks are available as a read-only SQL script plus Python wrapper.
 
-Phase 7 is implemented for the January 2024 development sample. Staging is loaded, the reconciled layer is built, the `dw` dimensional warehouse has been populated and validated locally, and the OLAP analysis has been executed successfully.
-
-The next major milestone is Phase 8: quality checks and reproducibility validation.
+The next major milestone is Phase 9: presentation and live demo preparation.

@@ -19,4 +19,7 @@ Planned order:
 .\.venv\Scripts\python scripts\download_nyc_boundaries.py
 .\.venv\Scripts\python scripts\load_staging.py --create-tables --dataset all
 .\.venv\Scripts\python scripts\build_reconciled.py
+.\.venv\Scripts\python scripts\build_warehouse_schema.py
+.\.venv\Scripts\python scripts\build_warehouse.py
+.\.venv\Scripts\python scripts\run_quality_checks.py
 ```

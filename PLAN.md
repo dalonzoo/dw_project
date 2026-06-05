@@ -10,8 +10,8 @@
 
 ## Current Resume Point
 - Overall status: `DOING`.
-- Next step: run Phase 8 quality checks and reproducibility validation.
-- Current phase: Phase 8 - Quality Checks And Reproducibility.
+- Next step: prepare Phase 9 presentation and live demo.
+- Current phase: Phase 9 - Presentation And Demo.
 - Last updated: 2026-06-05.
 
 ## Project Goal And Grade Strategy
@@ -233,7 +233,7 @@ Done when:
 - OLAP queries can run without scanning raw staging tables.
 
 ### Phase 7 - OLAP Analysis
-Status: `Done`
+Status: `DONE`
 
 Goal: create SQL analyses that demonstrate meaningful insights and OLAP operations.
 
@@ -258,18 +258,18 @@ Done when:
 - Queries finish fast enough for the live demo.
 
 ### Phase 8 - Quality Checks And Reproducibility
-Status: `TODO`
+Status: `DONE`
 
 Goal: make the project reliable enough to defend.
 
 Checks:
-- [ ] Raw file row counts match staging row counts.
-- [ ] Duplicate ride IDs are detected and handled.
-- [ ] Invalid timestamps and impossible durations are reported.
-- [ ] Station geographic enrichment coverage is reported.
-- [ ] Weather and calendar joins have expected coverage.
-- [ ] Every fact row has valid dimension keys or controlled `unknown` keys.
-- [ ] Aggregate fact totals match ride-grain fact totals for equivalent filters.
+- [x] Raw file row counts match staging row counts.
+- [x] Duplicate ride IDs are detected and handled.
+- [x] Invalid timestamps and impossible durations are reported.
+- [x] Station geographic enrichment coverage is reported.
+- [x] Weather and calendar joins have expected coverage.
+- [x] Every fact row has valid dimension keys or controlled `unknown` keys.
+- [x] Aggregate fact totals match ride-grain fact totals for equivalent filters.
 
 Done when:
 - A script or documented SQL file runs the main checks.
@@ -310,12 +310,12 @@ Done when:
 - [x] Reconciled layer implemented and documented.
 - [x] DFM completed.
 - [x] Star/snowflake schema implemented in PostgreSQL.
-- [ ] PostgreSQL/PostGIS environment reproducible.
+- [x] PostgreSQL/PostGIS environment reproducible.
 - [ ] DBeaver demo connection configured and tested.
 - [x] ETL scripts run end to end.
 - [x] At least 3 non-trivial dimensional hierarchies are visible and used.
 - [x] At least 5 OLAP analyses are implemented and interpreted.
-- [ ] README explains setup, data acquisition, ETL, warehouse build, and analysis.
+- [x] README explains setup, data acquisition, ETL, warehouse build, analysis, and quality checks.
 - [ ] Slides and live demo are ready.
 
 ## Progress Log
@@ -335,6 +335,7 @@ Done when:
 - 2026-06-04: Completed Phase 5 DFM and warehouse design. Added `docs/modeling_notes.md`, `docs/phase5_warehouse_design.md`, `diagrams/phase5_dfm.drawio`, `diagrams/phase5_physical_schema.drawio`, `sql/dw/01_create_warehouse_tables.sql`, `sql/dw/02_validate_warehouse_schema.sql`, and `scripts/build_warehouse_schema.py`. Ran the warehouse schema builder locally and validated 10 `dw` tables, 18 foreign keys, and OLAP indexes. Current resume point moved to Phase 6 warehouse population.
 - 2026-06-04: Completed Phase 6 warehouse population for the January 2024 development sample. Added `sql/dw/03_load_warehouse.sql`, `sql/dw/04_validate_warehouse_load.sql`, `scripts/build_warehouse.py`, and `docs/phase6_warehouse_population.md`. Local validation populated 1,881,951 ride-grain facts and 801,443 station-day-hour aggregate facts. Fact counts reconcile exactly with `reconciled.trip`, aggregate starts and ends both sum to 1,881,951, and night-trip totals match at 285,097. Current resume point moved to Phase 7 OLAP analysis.
 - 2026-06-05: Completed Phase 7 OLAP analysis on the populated January 2024 dimensional warehouse. Added `sql/olap/01_olap_analysis.sql` with seven DBeaver-ready OLAP analyses covering night demand, weather impact by rider type, station inflow/outflow imbalance, rideable type usage under weather severity, night origin-destination corridors, holiday and long-weekend effects, and hourly night mobility profiles. Executed the OLAP SQL successfully with `ON_ERROR_STOP=1` and documented the main findings in `docs/phase7_olap_analysis.md`. Current resume point moved to Phase 8 quality checks and reproducibility validation.
+- 2026-06-05: Completed Phase 8 quality checks and reproducibility support. Added `sql/quality/01_quality_checks.sql`, `scripts/run_quality_checks.py`, and `docs/phase8_quality_reproducibility.md`. The checks cover source/staging row-count reconciliation, accepted/rejected trip accounting, duplicate ride IDs, invalid timestamps and durations, station geographic enrichment coverage, calendar/weather coverage, fact dimension key integrity, aggregate fact reconciliation, and measure sanity. Fixed README formatting around OLAP execution, added quality-check instructions, updated `scripts/README.md`, and moved the current resume point to Phase 9 presentation and demo preparation.
 
 
 
