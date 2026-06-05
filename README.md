@@ -113,6 +113,14 @@ Build, populate, and validate the dimensional warehouse:
 
 The warehouse population is documented in [docs/phase6_warehouse_population.md](docs/phase6_warehouse_population.md).
 
+## OLAP Analysis
+
+Run the Phase 7 OLAP analysis queries:
+
+powershell
+.\.venv\Scripts\psql -d urban_night_mobility_dw -v ON_ERROR_STOP=1 -f sql\olap\01_olap_analysis.sql
+
+
 ## Database Convention
 
 Default local database name: `urban_night_mobility_dw`
@@ -139,6 +147,8 @@ See [docs/development_workflow.md](docs/development_workflow.md) for the exact G
 
 ## Current Status
 
-Phase 6 is implemented for the January 2024 development sample. Staging is loaded, the reconciled layer is built, and the `dw` dimensional warehouse has been populated and validated locally.
+## Current Status
 
-The next major milestone is Phase 7: OLAP analysis.
+Phase 7 is implemented for the January 2024 development sample. Staging is loaded, the reconciled layer is built, the `dw` dimensional warehouse has been populated and validated locally, and the OLAP analysis has been executed successfully.
+
+The next major milestone is Phase 8: quality checks and reproducibility validation.

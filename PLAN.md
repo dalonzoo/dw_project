@@ -10,9 +10,9 @@
 
 ## Current Resume Point
 - Overall status: `DOING`.
-- Next step: create Phase 7 OLAP SQL analyses on the populated dimensional warehouse.
-- Current phase: Phase 7 - OLAP Analysis.
-- Last updated: 2026-06-04.
+- Next step: run Phase 8 quality checks and reproducibility validation.
+- Current phase: Phase 8 - Quality Checks And Reproducibility.
+- Last updated: 2026-06-05.
 
 ## Project Goal And Grade Strategy
 Build a PostgreSQL/PostGIS data warehouse that analyzes Citi Bike urban night mobility in NYC, enriched with weather, holidays, and geographic boundaries. The project aims for the highest grade by showing:
@@ -233,17 +233,17 @@ Done when:
 - OLAP queries can run without scanning raw staging tables.
 
 ### Phase 7 - OLAP Analysis
-Status: `TODO`
+Status: `Done`
 
 Goal: create SQL analyses that demonstrate meaningful insights and OLAP operations.
 
 Required analysis sessions:
-- [ ] Nightlife demand by borough/NTA across weekdays, weekends, and holiday windows.
-- [ ] Weather impact on casual vs member riders.
-- [ ] Station inflow/outflow imbalance by time of day and geography.
-- [ ] Electric vs classic bike usage at night and under bad weather.
-- [ ] Top night mobility corridors using start/end NTA pairs.
-- [ ] Before/after holiday and long-weekend effects.
+- [x] Nightlife demand by borough/NTA across weekdays, weekends, and holiday windows.
+- [x] Weather impact on casual vs member riders.
+- [x] Station inflow/outflow imbalance by time of day and geography.
+- [x] Electric vs classic bike usage at night and under bad weather.
+- [x] Top night mobility corridors using start/end NTA pairs.
+- [x] Before/after holiday and long-weekend effects.
 
 Each analysis must include:
 - SQL query.
@@ -314,7 +314,7 @@ Done when:
 - [ ] DBeaver demo connection configured and tested.
 - [x] ETL scripts run end to end.
 - [x] At least 3 non-trivial dimensional hierarchies are visible and used.
-- [ ] At least 5 OLAP analyses are implemented and interpreted.
+- [x] At least 5 OLAP analyses are implemented and interpreted.
 - [ ] README explains setup, data acquisition, ETL, warehouse build, and analysis.
 - [ ] Slides and live demo are ready.
 
@@ -334,6 +334,9 @@ Done when:
 - 2026-05-24: Completed Phase 4 reconciled implementation for the January 2024 development sample. Added `sql/reconciled/01_create_reconciled_tables.sql`, `02_load_reconciled.sql`, `03_validate_reconciled.sql`, `scripts/build_reconciled.py`, and `docs/phase4_reconciled.md`. Local validation confirmed 1,881,951 accepted trips and 6,134 rejected staging trips, accounting for all 1,888,085 Citi Bike staging rows. Built 2,262 reconciled stations, assigned 2,223 to NYC NTAs, classified 39 as outside NYC or unknown, and derived calendar, weather, distance, night-trip, weekend, and flow-direction attributes.
 - 2026-06-04: Completed Phase 5 DFM and warehouse design. Added `docs/modeling_notes.md`, `docs/phase5_warehouse_design.md`, `diagrams/phase5_dfm.drawio`, `diagrams/phase5_physical_schema.drawio`, `sql/dw/01_create_warehouse_tables.sql`, `sql/dw/02_validate_warehouse_schema.sql`, and `scripts/build_warehouse_schema.py`. Ran the warehouse schema builder locally and validated 10 `dw` tables, 18 foreign keys, and OLAP indexes. Current resume point moved to Phase 6 warehouse population.
 - 2026-06-04: Completed Phase 6 warehouse population for the January 2024 development sample. Added `sql/dw/03_load_warehouse.sql`, `sql/dw/04_validate_warehouse_load.sql`, `scripts/build_warehouse.py`, and `docs/phase6_warehouse_population.md`. Local validation populated 1,881,951 ride-grain facts and 801,443 station-day-hour aggregate facts. Fact counts reconcile exactly with `reconciled.trip`, aggregate starts and ends both sum to 1,881,951, and night-trip totals match at 285,097. Current resume point moved to Phase 7 OLAP analysis.
+- 2026-06-05: Completed Phase 7 OLAP analysis on the populated January 2024 dimensional warehouse. Added `sql/olap/01_olap_analysis.sql` with seven DBeaver-ready OLAP analyses covering night demand, weather impact by rider type, station inflow/outflow imbalance, rideable type usage under weather severity, night origin-destination corridors, holiday and long-weekend effects, and hourly night mobility profiles. Executed the OLAP SQL successfully with `ON_ERROR_STOP=1` and documented the main findings in `docs/phase7_olap_analysis.md`. Current resume point moved to Phase 8 quality checks and reproducibility validation.
+
+
 
 ## Open Questions
 - Decide whether final execution will use all 12 months of 2024 or a reduced final subset if local compute becomes too slow.
