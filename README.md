@@ -150,7 +150,12 @@ Schemas:
 - `staging`: raw-ish loaded source tables
 - `reconciled`: cleaned integrated relational tables
 - `dw`: dimensional warehouse facts and dimensions
-- `audit`: row counts, load metadata, and data quality results
+- `audit`: load metadata and row-count audit support
+
+
+### Staging rerun note
+
+`scripts/load_staging.py` appends rows to staging tables. Run it on a clean database, or truncate/reset staging tables before reloading the same raw files, to avoid duplicate raw rows.
 
 ## Development Workflow
 

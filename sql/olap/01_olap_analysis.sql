@@ -70,6 +70,44 @@ ORDER BY
     trips DESC;
 
 
+-- ------------------------------------------------------------
+-- Support query for Analysis 2: normalized weather-day demand
+-- Purpose:
+-- Compare night demand across weather classes using average
+-- night trips per weather day, avoiding distortion caused by
+-- different numbers of days per weather class.
+-- ------------------------------------------------------------
+
+WITH weather_day_night_trips AS (
+    SELECT
+        w.condition_class,
+        w.severity_label,
+        w.observation_date,
+        SUM(f.trip_count) AS night_trips
+    FROM dw.fact_trip f
+    JOIN dw.dim_weather w
+        ON f.start_weather_key = w.weather_key
+    WHERE f.is_night_trip = TRUE
+      AND w.weather_key <> 0
+    GROUP BY
+        w.condition_class,
+        w.severity_label,
+        w.observation_date
+)
+SELECT
+    condition_class,
+    severity_label,
+    COUNT(*) AS weather_days,
+    SUM(night_trips) AS total_night_trips,
+    ROUND(AVG(night_trips), 2) AS avg_night_trips_per_weather_day
+FROM weather_day_night_trips
+GROUP BY
+    condition_class,
+    severity_label
+ORDER BY
+    avg_night_trips_per_weather_day DESC;
+
+
 -- ============================================================
 -- Analysis 3: Station inflow/outflow imbalance
 -- Business question:
@@ -164,6 +202,33 @@ GROUP BY
     COALESCE(end_geo.nta_name, 'Unknown')
 ORDER BY night_trips DESC
 LIMIT 30;
+
+
+
+-- ============================================================
+-- Support query for Analysis 5: borough-only OD flows
+-- Purpose:
+-- Produce the borough-to-borough night-flow table used in the
+-- presentation, without NTA-level detail.
+-- ============================================================
+
+SELECT
+    COALESCE(start_geo.borough_name, 'Unknown') AS start_borough,
+    COALESCE(end_geo.borough_name, 'Unknown') AS end_borough,
+    SUM(f.trip_count) AS night_trips,
+    ROUND(AVG(f.duration_minutes), 2) AS avg_duration_minutes,
+    ROUND(AVG(f.approximate_distance_km), 3) AS avg_distance_km
+FROM dw.fact_trip f
+JOIN dw.dim_geography start_geo
+    ON f.start_geography_key = start_geo.geography_key
+JOIN dw.dim_geography end_geo
+    ON f.end_geography_key = end_geo.geography_key
+WHERE f.is_night_trip = TRUE
+GROUP BY
+    COALESCE(start_geo.borough_name, 'Unknown'),
+    COALESCE(end_geo.borough_name, 'Unknown')
+ORDER BY
+    night_trips DESC;
 
 
 -- ============================================================

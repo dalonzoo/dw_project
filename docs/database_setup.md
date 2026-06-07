@@ -64,7 +64,7 @@ This is a useful first live-demo proof: it shows the project is using a real DBM
 DBeaver is installed locally at:
 
 ```text
-C:\Users\danie\AppData\Local\DBeaver\dbeaver.exe
+Open DBeaver from your operating system's application launcher, then create a PostgreSQL connection to `urban_night_mobility_dw`.
 ```
 
 Create a new PostgreSQL connection with the values from `.env`:

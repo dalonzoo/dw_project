@@ -1,6 +1,6 @@
 # Project Proposal - Urban Night Mobility Data Warehouse
 
-**Names and student IDs:** [Name Surname, matricola] - [Name Surname, matricola]
+**Names and student IDs:** [Daniele D'Alonzo, 2059687] - [Sara Inzerillo, 2045179]
 
 **Chosen type of project:** Data Warehousing - integration of multiple data sources through ETL, DFM design, star or snowflake schema implementation in PostgreSQL, and OLAP analysis.
 

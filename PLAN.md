@@ -63,7 +63,6 @@ Build a PostgreSQL/PostGIS data warehouse that analyzes Citi Bike urban night mo
 - [x] Prepare the single-page PDF proposal with both students' names and matricole.
 - [x] Send the proposal email with subject `[DM] Project Proposal`, all group members included, and the PDF attached.
 - [x] Receive professor approval before starting implementation.
-- [ ] Optional: replace placeholders in `project_idea.md` if the repository copy must include names and matricole.
 - [ ] At the end of the project, send slides, repository link, and any useful material with subject `[DM] Project Discussion`.
 
 ## Roadmap

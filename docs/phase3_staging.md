@@ -96,3 +96,7 @@ These rows are intentionally preserved in the staging layer because staging shou
 Commit SQL scripts, ETL scripts, documentation, and dependency files.
 
 Do not commit raw data, local `.env` files, database dumps, or generated outputs.
+
+## Rerun Safety
+
+The staging loader uses append-based inserts into the raw staging tables. For reproducible reruns, execute the loader on a clean database or truncate the staging tables before reloading the same raw files. Otherwise, repeated executions may duplicate raw staging rows.
