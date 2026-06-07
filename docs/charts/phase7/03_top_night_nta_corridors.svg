@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <rect width="100%" height="100%" fill="#FFFFFF"/>
+  <text x="40" y="52" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" fill="#17212B">Top night origin-destination corridors</text>
+  <text x="40" y="82" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#667085">Slice on night trips; group by origin and destination NTA.</text>
+  <text x="414" y="150" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#17212B">East Village -&gt; East Village</text>
+  <rect x="430" y="125" width="680.0" height="38" fill="#23395B" rx="4"/>
+  <text x="1120.0" y="150" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#17212B">5,953</text>
+  <text x="414" y="208" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#17212B">Chelsea-Hudson Yards -&gt; Chelsea-Hudson Yards</text>
+  <rect x="430" y="183" width="631.6" height="38" fill="#23395B" rx="4"/>
+  <text x="1071.6" y="208" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#17212B">5,529</text>
+  <text x="414" y="266" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#17212B">Williamsburg -&gt; Williamsburg</text>
+  <rect x="430" y="241" width="430.0" height="38" fill="#23395B" rx="4"/>
+  <text x="870.0" y="266" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#17212B">3,764</text>
+  <text x="414" y="324" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#17212B">Hell&#x27;s Kitchen -&gt; Hell&#x27;s Kitchen</text>
+  <rect x="430" y="299" width="342.2" height="38" fill="#23395B" rx="4"/>
+  <text x="782.2" y="324" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#17212B">2,996</text>
+  <text x="414" y="382" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#17212B">Midtown-Times Square -&gt; Midtown-Times Square</text>
+  <rect x="430" y="357" width="322.8" height="38" fill="#23395B" rx="4"/>
+  <text x="762.8" y="382" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#17212B">2,826</text>
+  <text x="414" y="440" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#17212B">Greenwich Village -&gt; East Village</text>
+  <rect x="430" y="415" width="250.8" height="38" fill="#1B998B" rx="4"/>
+  <text x="690.8" y="440" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#17212B">2,196</text>
+  <text x="414" y="498" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#17212B">Williamsburg -&gt; Greenpoint</text>
+  <rect x="430" y="473" width="249.0" height="38" fill="#1B998B" rx="4"/>
+  <text x="689.0" y="498" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#17212B">2,180</text>
+  <text x="414" y="556" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#17212B">Midtown-Times Square -&gt; Hell&#x27;s Kitchen</text>
+  <rect x="430" y="531" width="243.9" height="38" fill="#1B998B" rx="4"/>
+  <text x="683.9" y="556" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#17212B">2,135</text>
+  <text x="414" y="614" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#17212B">Chelsea-Hudson Yards -&gt; Hell&#x27;s Kitchen</text>
+  <rect x="430" y="589" width="224.7" height="38" fill="#1B998B" rx="4"/>
+  <text x="664.7" y="614" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#17212B">1,967</text>
+  <text x="414" y="672" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#17212B">Midtown South-Flatiron-Union Square -&gt; Chelsea-Hu...</text>
+  <rect x="430" y="647" width="213.7" height="38" fill="#1B998B" rx="4"/>
+  <text x="653.7" y="672" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#17212B">1,871</text>
+  <text x="40" y="736" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#667085">Source: dw fact and dimensions, January 2024 Citi Bike development sample</text>
+</svg>

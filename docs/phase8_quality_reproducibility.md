@@ -11,7 +11,7 @@ sql/quality/01_quality_checks.sql
 It can be executed directly in DBeaver or through `psql`:
 
 ```powershell
-.\.venv\Scripts\psql -d urban_night_mobility_dw -v ON_ERROR_STOP=1 -f sql\quality\01_quality_checks.sql
+psql -d urban_night_mobility_dw -v ON_ERROR_STOP=1 -f sql\quality\01_quality_checks.sql
 ```
 
 A Python wrapper is also available:

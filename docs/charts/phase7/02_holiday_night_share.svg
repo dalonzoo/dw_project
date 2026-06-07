@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="650" viewBox="0 0 1100 650">
+  <rect width="100%" height="100%" fill="#FFFFFF"/>
+  <text x="40" y="52" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" fill="#17212B">Night-trip share by calendar context</text>
+  <text x="40" y="82" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#667085">Calendar-event dimension shows how holiday windows change relative night demand.</text>
+  <line x1="300.0" y1="125" x2="300.0" y2="495" stroke="#E5E7EB"/>
+  <text x="300.0" y="521" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#667085">0%</text>
+  <line x1="459.1" y1="125" x2="459.1" y2="495" stroke="#E5E7EB"/>
+  <text x="459.1" y="521" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#667085">5%</text>
+  <line x1="618.2" y1="125" x2="618.2" y2="495" stroke="#E5E7EB"/>
+  <text x="618.2" y="521" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#667085">10%</text>
+  <line x1="777.3" y1="125" x2="777.3" y2="495" stroke="#E5E7EB"/>
+  <text x="777.3" y="521" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#667085">15%</text>
+  <line x1="936.4" y1="125" x2="936.4" y2="495" stroke="#E5E7EB"/>
+  <text x="936.4" y="521" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#667085">20%</text>
+  <text x="282" y="154" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#17212B">public_holiday / holiday</text>
+  <rect x="300" y="125" width="654.2" height="44" fill="#E76F51" rx="4"/>
+  <text x="964.2" y="153" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#17212B">20.56%</text>
+  <text x="310" y="153" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#FFFFFF">19,005 night / 92,442 total</text>
+  <text x="282" y="220" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#17212B">long_weekend / holiday_eve</text>
+  <rect x="300" y="191" width="568.9" height="44" fill="#F2C14E" rx="4"/>
+  <text x="878.9" y="219" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#17212B">17.88%</text>
+  <text x="310" y="219" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#FFFFFF">8,788 night / 49,145 total</text>
+  <text x="282" y="286" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#17212B">regular / regular</text>
+  <rect x="300" y="257" width="473.8" height="44" fill="#1B998B" rx="4"/>
+  <text x="783.8" y="285" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#17212B">14.89%</text>
+  <text x="310" y="285" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#FFFFFF">235,488 night / 1,581,624 total</text>
+  <text x="282" y="352" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#17212B">holiday_context / post_holiday</text>
+  <rect x="300" y="323" width="457.5" height="44" fill="#6A4C93" rx="4"/>
+  <text x="767.5" y="351" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#17212B">14.38%</text>
+  <text x="310" y="351" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#FFFFFF">13,673 night / 95,064 total</text>
+  <text x="282" y="418" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#17212B">long_weekend / long_weekend</text>
+  <rect x="300" y="389" width="407.0" height="44" fill="#23395B" rx="4"/>
+  <text x="717.0" y="417" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#17212B">12.79%</text>
+  <text x="310" y="417" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#FFFFFF">8,143 night / 63,676 total</text>
+  <text x="40" y="626" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#667085">Source: dw fact and dimensions, January 2024 Citi Bike development sample</text>
+</svg>

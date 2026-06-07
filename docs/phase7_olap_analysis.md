@@ -21,6 +21,12 @@ The SQL queries are stored in:
 sql/olap/01_olap_analysis.sql
 ```
 
+Selected chart assets for slides and discussion are stored in:
+
+```text
+docs/charts/phase7/
+```
+
 ---
 
 ## Analysis 1 - Night demand by borough and day type
@@ -34,6 +40,9 @@ Night mobility is strongly concentrated in Manhattan, followed by Brooklyn. The 
 
 Holiday-related windows show longer average trip durations. For example, Manhattan weekday holiday trips have an average duration of **12.56 minutes**, while Manhattan weekday regular trips have an average duration of **10.55 minutes**.
 
+**Chart:**
+![Night trips by borough and day type](charts/phase7/01_night_trips_by_borough_daytype.svg)
+
 ---
 
 ## Analysis 2 - Weather impact on casual vs member riders
@@ -45,7 +54,7 @@ This query compares trip demand by rider type, weather condition class, and weat
 **Main finding:**  
 Members account for much larger trip volumes than casual riders. Casual riders have longer average trip durations than members across the visible weather classes. For example, casual dry-weather trips have an average duration of **15.60 minutes**, while member trips are generally closer to about **10 minutes** in the visible output.
 
-Adverse weather does not eliminate demand, but demand distribution changes across severity and condition classes. Rows with unknown weather should be treated as data-quality edge cases rather than central analytical evidence.
+Adverse weather does not eliminate demand, but demand distribution changes across severity and condition classes. Rows with `unknown` weather should be treated as data-quality edge cases rather than central analytical evidence. They mostly reflect trips that started on **2023-12-31**, while the weather source covers calendar year 2024.
 
 ---
 
@@ -68,6 +77,9 @@ The strongest station-level imbalances are concentrated in Manhattan. Examples i
 
 Negative net flow means more departures than arrivals. Positive net flow means more arrivals than departures. These results identify stations where rebalancing pressure is likely higher.
 
+**Chart:**
+![Station inflow/outflow imbalance](charts/phase7/04_station_net_flow_imbalance.svg)
+
 ---
 
 ## Analysis 4 - Electric vs classic bike usage at night and under weather severity
@@ -79,7 +91,7 @@ This query compares bike type usage by day/night class and weather severity.
 **Main finding:**  
 Classic bikes dominate the visible output. Day trips are much more frequent than night trips across all weather severity classes. For classic bikes, moderate-severity day trips account for **187,545 trips**, while moderate-severity night trips account for **28,679 trips**.
 
-Rows with unknown severity and extreme average duration are treated as data-quality edge cases.
+Rows with `unknown` severity and extreme average duration are treated as data-quality edge cases. They are useful to mention in Phase 8 quality checks, but they should not drive the main weather interpretation.
 
 ---
 
@@ -102,6 +114,9 @@ Top night corridors are mostly short intra-neighborhood trips. The strongest vis
 
 This supports the interpretation that night Citi Bike mobility is highly local and concentrated around dense nightlife and mixed-use areas.
 
+**Chart:**
+![Top night origin-destination corridors](charts/phase7/03_top_night_nta_corridors.svg)
+
 ---
 
 ## Analysis 6 - Holiday and long-weekend effects
@@ -115,6 +130,9 @@ Public holidays have the highest night-trip share, with **19,005 night trips** o
 
 This suggests that holiday-related contexts increase the relative importance of night mobility.
 
+**Chart:**
+![Night-trip share by calendar context](charts/phase7/02_holiday_night_share.svg)
+
 ---
 
 ## Analysis 7 - Hourly night mobility profile
@@ -124,7 +142,7 @@ This suggests that holiday-related contexts increase the relative importance of 
 This query drills down demand by start hour and separates weekdays from weekends.
 
 **Main finding:**  
-Night trips are concentrated between **00:00 and 05:59**. From **06:00** onward, `night_trips` becomes zero, which confirms that the warehouse night-trip flag defines night mobility as early-morning/night hours up to 05:59.
+The warehouse defines night mobility as trips starting between **20:00 and 05:59**. The hourly drill-down confirms that `night_trips` are present from **20:00 to 23:00** and from **00:00 to 05:00**, while they become zero from **06:00 to 19:00**. This validates the night-trip flag and separates evening/night mobility from daytime demand.
 
 The 5 AM weekday value is relatively high, with **14,613 night trips**, which may reflect early commuting or transitional mobility rather than nightlife only.
 

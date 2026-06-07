@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="700" viewBox="0 0 1100 700">
+  <rect width="100%" height="100%" fill="#FFFFFF"/>
+  <text x="40" y="52" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" fill="#17212B">Night trips by borough and day type</text>
+  <text x="40" y="82" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#667085">Slice on night trips; roll-up to borough; compare weekdays vs weekends.</text>
+  <line x1="90" y1="555.0" x2="1030" y2="555.0" stroke="#E5E7EB"/>
+  <text x="78" y="559.0" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#667085">0k</text>
+  <line x1="90" y1="447.5" x2="1030" y2="447.5" stroke="#E5E7EB"/>
+  <text x="78" y="451.5" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#667085">50k</text>
+  <line x1="90" y1="340.0" x2="1030" y2="340.0" stroke="#E5E7EB"/>
+  <text x="78" y="344.0" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#667085">100k</text>
+  <line x1="90" y1="232.5" x2="1030" y2="232.5" stroke="#E5E7EB"/>
+  <text x="78" y="236.5" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#667085">150k</text>
+  <line x1="90" y1="125.0" x2="1030" y2="125.0" stroke="#E5E7EB"/>
+  <text x="78" y="129.0" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#667085">200k</text>
+  <rect x="148.5" y="258.7" width="54" height="296.3" fill="#23395B" rx="3"/>
+  <text x="175.5" y="250.7" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#17212B">137,802</text>
+  <rect x="212.5" y="471.1" width="54" height="83.9" fill="#1B998B" rx="3"/>
+  <text x="239.5" y="463.1" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#17212B">39,001</text>
+  <text x="207.5" y="589" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#17212B">Manhattan</text>
+  <rect x="383.5" y="429.1" width="54" height="125.9" fill="#23395B" rx="3"/>
+  <text x="410.5" y="421.1" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#17212B">58,574</text>
+  <rect x="447.5" y="517.5" width="54" height="37.5" fill="#1B998B" rx="3"/>
+  <text x="474.5" y="509.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#17212B">17,438</text>
+  <text x="442.5" y="589" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#17212B">Brooklyn</text>
+  <rect x="618.5" y="518.8" width="54" height="36.2" fill="#23395B" rx="3"/>
+  <text x="645.5" y="510.8" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#17212B">16,832</text>
+  <rect x="682.5" y="544.1" width="54" height="10.9" fill="#1B998B" rx="3"/>
+  <text x="709.5" y="536.1" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#17212B">5,073</text>
+  <text x="677.5" y="589" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#17212B">Queens</text>
+  <rect x="853.5" y="538.0" width="54" height="17.0" fill="#23395B" rx="3"/>
+  <text x="880.5" y="530.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#17212B">7,911</text>
+  <rect x="917.5" y="549.7" width="54" height="5.3" fill="#1B998B" rx="3"/>
+  <text x="944.5" y="541.7" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#17212B">2,466</text>
+  <text x="912.5" y="589" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#17212B">Bronx</text>
+  <rect x="820" y="105" width="16" height="16" fill="#23395B" rx="2"/><text x="845" y="118" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#17212B">Weekday</text>
+  <rect x="925" y="105" width="16" height="16" fill="#1B998B" rx="2"/><text x="950" y="118" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#17212B">Weekend</text>
+  <text x="40" y="676" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#667085">Source: dw fact and dimensions, January 2024 Citi Bike development sample</text>
+</svg>
