@@ -77,8 +77,7 @@ The strongest station-level imbalances are concentrated in Manhattan. Examples i
 
 Negative net flow means more departures than arrivals. Positive net flow means more arrivals than departures. These results identify stations where rebalancing pressure is likely higher.
 
-**Chart:**
-![Station inflow/outflow imbalance](charts/phase7/04_station_net_flow_imbalance.svg)
+For presentation purposes, the net-flow idea is also aggregated to NTA level in a companion chart under Analysis 5, so it can be compared directly with the top night origin-destination corridors.
 
 ---
 
@@ -116,6 +115,11 @@ This supports the interpretation that night Citi Bike mobility is highly local a
 
 **Chart:**
 ![Top night origin-destination corridors](charts/phase7/03_top_night_nta_corridors.svg)
+
+**Companion chart:**
+![Night NTA net-flow for top corridor areas](charts/phase7/04_station_net_flow_imbalance.svg)
+
+The companion chart uses the same NTA areas appearing in the top corridor chart and computes night net-flow as `night ends - night starts`. This makes the directional interpretation clearer: for example, Greenwich Village and Williamsburg behave more like night origins, while East Village and Greenpoint behave more like night destinations.
 
 ---
 

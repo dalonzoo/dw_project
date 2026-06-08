@@ -303,7 +303,7 @@ Uso consigliato:
 | `01_night_trips_by_borough_daytype.svg` | Dopo la query su night demand per borough e weekday/weekend. |
 | `02_holiday_night_share.svg` | Quando spieghi perche' la calendar-event dimension e' utile. |
 | `03_top_night_nta_corridors.svg` | Quando passi dal roll-up per borough al dettaglio origine-destinazione NTA. |
-| `04_station_net_flow_imbalance.svg` | Quando vuoi mostrare il valore della fact aggregata `fact_station_day_hour`. |
+| `04_station_net_flow_imbalance.svg` | Quando vuoi correlare i top NTA corridors con il night net-flow delle stesse aree. |
 
 Frase da esposizione:
 
