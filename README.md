@@ -39,6 +39,101 @@ Latest local validation uses the January 2024 Citi Bike development sample plus 
 | Warehouse | `dw` | Dimensional facts and dimensions for OLAP analysis. |
 | Audit / quality | `audit`, `sql/quality/` | Load metadata and row-count audit support, plus read-only integrity and coverage checks. |
 
+### Data Warehouse Blueprint
+
+```mermaid
+flowchart LR
+    classDef source fill:#f6f8fa,stroke:#8c959f,color:#24292f
+    classDef staging fill:#fff8c5,stroke:#d4a72c,color:#24292f
+    classDef reconciled fill:#ddf4ff,stroke:#54aeef,color:#24292f
+    classDef warehouse fill:#dafbe1,stroke:#2da44e,color:#24292f
+    classDef audit fill:#ffebe9,stroke:#cf222e,color:#24292f
+    classDef output fill:#fbefff,stroke:#8250df,color:#24292f
+
+    subgraph SRC["Source files"]
+        CB["Citi Bike trips<br/>January 2024 sample"]
+        W["NOAA weather<br/>2024 daily observations"]
+        H["US holidays<br/>2024 calendar"]
+        G["NYC borough and NTA<br/>geographic boundaries"]
+    end
+
+    subgraph STG["staging"]
+        ST["Raw source tables<br/>minimal transformation"]
+    end
+
+    subgraph REC["reconciled"]
+        RT["clean_trip"]
+        RS["station"]
+        RC["calendar and weather"]
+        RG["borough and NTA geography"]
+        RR["rejected_trip"]
+    end
+
+    subgraph DW["dw dimensional warehouse"]
+        FT(("fact_trip<br/>ride grain"))
+        FH(("fact_station_day_hour<br/>station-hour aggregate"))
+        DD["dim_date"]
+        DT["dim_time"]
+        DC["dim_calendar_event"]
+        DWX["dim_weather"]
+        DG["dim_geography"]
+        DS["dim_station"]
+        DU["dim_user_type"]
+        DR["dim_rideable_type"]
+    end
+
+    subgraph QA["audit and quality"]
+        AQ["row counts<br/>load metadata<br/>integrity checks"]
+    end
+
+    subgraph OUT["analysis outputs"]
+        OLAP["OLAP SQL queries"]
+        CH["charts and findings"]
+        DEMO["presentation and live demo"]
+    end
+
+    CB --> ST
+    W --> ST
+    H --> ST
+    G --> ST
+    ST --> RT
+    ST --> RS
+    ST --> RC
+    ST --> RG
+    ST --> RR
+    RT --> FT
+    RS --> DS
+    RC --> DD
+    RC --> DC
+    RC --> DWX
+    RG --> DG
+    DD --> FT
+    DT --> FT
+    DC --> FT
+    DWX --> FT
+    DG --> FT
+    DS --> FT
+    DU --> FT
+    DR --> FT
+    FT --> FH
+    FT --> OLAP
+    FH --> OLAP
+    OLAP --> CH
+    CH --> DEMO
+    ST -.-> AQ
+    RR -.-> AQ
+    FT -.-> AQ
+    FH -.-> AQ
+    AQ -.-> DEMO
+
+    class CB,W,H,G source
+    class ST staging
+    class RT,RS,RC,RG,RR reconciled
+    class FT,FH,DD,DT,DC,DWX,DG,DS,DU,DR warehouse
+    class AQ audit
+    class OLAP,CH,DEMO output
+```
+
 Main warehouse facts:
 
 - `dw.fact_trip`: one accepted Citi Bike ride.
