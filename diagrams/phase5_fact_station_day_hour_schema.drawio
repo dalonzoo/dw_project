@@ -1,0 +1,55 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Fact Station Day Hour Schema">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="Physical star/snowflake schema for dw.fact_station_day_hour" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=26;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="390" y="30" width="920" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="fact_station_day_hour" value="dw.fact_station_day_hour&#xa;PK fact_station_day_hour_key&#xa;UK station_key + date_key + time_key&#xa;&#xa;Grain: one station, one date, one hour&#xa;&#xa;FK station, date, time&#xa;FK calendar event, weather&#xa;&#xa;Measures:&#xa;trip_starts, trip_ends&#xa;net_flow_count = ends - starts&#xa;night/member/casual starts&#xa;electric/classic starts&#xa;total duration and distance" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;align=left;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="620" y="370" width="430" height="310" as="geometry" />
+        </mxCell>
+        <mxCell id="dim_date" value="dw.dim_date&#xa;PK date_key&#xa;UK date_value&#xa;&#xa;Hierarchy:&#xa;date -> week -> month -> quarter -> season -> year&#xa;&#xa;Used for station-day roll-up" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="180" y="110" width="330" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="dim_time" value="dw.dim_time&#xa;PK time_key&#xa;UK hour_number&#xa;&#xa;Hierarchy:&#xa;hour -> part_of_day -> day_night_class&#xa;&#xa;Used for hourly demand and night slicing" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="600" y="110" width="330" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="dim_calendar_event" value="dw.dim_calendar_event&#xa;PK calendar_event_key&#xa;UK date_value&#xa;&#xa;Attributes:&#xa;public holiday, holiday eve, post holiday&#xa;bridge day, long weekend, holiday window&#xa;&#xa;Linked by station-day date" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="110" width="380" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="dim_weather" value="dw.dim_weather&#xa;PK weather_key&#xa;UK observation_date&#xa;&#xa;Attributes and measures:&#xa;condition_class, severity_label&#xa;temperature, precipitation, snow, wind&#xa;&#xa;Linked by station-day date" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1130" y="760" width="380" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="dim_station" value="dw.dim_station&#xa;PK station_key&#xa;UK station_id&#xa;FK geography_key&#xa;&#xa;Attributes:&#xa;station name, coordinates&#xa;assignment status, observation count&#xa;first/last seen" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="180" y="440" width="350" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="dim_geography" value="dw.dim_geography&#xa;PK geography_key&#xa;UK geography_code&#xa;&#xa;Hierarchy:&#xa;NTA -> CDTA/community district -> borough -> city&#xa;&#xa;Snowflake dimension reached through dim_station" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="180" y="760" width="380" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="note" value="This aggregate fact supports fast OLAP on station flow. Rider type and rideable type are not foreign keys here; their counts are stored as additive measures." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;spacing=10;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="650" y="760" width="360" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="e_station" edge="1" parent="1" source="dim_station" target="fact_station_day_hour" style="endArrow=block;html=1;rounded=0;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_date" edge="1" parent="1" source="dim_date" target="fact_station_day_hour" style="endArrow=block;html=1;rounded=0;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_time" edge="1" parent="1" source="dim_time" target="fact_station_day_hour" style="endArrow=block;html=1;rounded=0;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_calendar_event" edge="1" parent="1" source="dim_calendar_event" target="fact_station_day_hour" style="endArrow=block;html=1;rounded=0;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_weather" edge="1" parent="1" source="dim_weather" target="fact_station_day_hour" style="endArrow=block;html=1;rounded=0;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_station_geography" edge="1" parent="1" source="dim_station" target="dim_geography" value="station geography FK" style="endArrow=block;html=1;rounded=0;dashed=1;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

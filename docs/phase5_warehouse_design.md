@@ -18,6 +18,7 @@ The phase produces:
 | `docs/modeling_notes.md` | Explains grain, measures, dimensions, hierarchies, and star/snowflake choices. |
 | `diagrams/phase5_dfm.drawio` | Conceptual DFM diagram for diagrams.net. |
 | `diagrams/phase5_physical_schema.drawio` | Physical warehouse overview for diagrams.net. |
+| `diagrams/phase5_fact_station_day_hour_schema.drawio` | Dedicated physical schema for the station-day-hour aggregate fact. |
 | `sql/dw/01_create_warehouse_tables.sql` | Creates the `dw` facts, dimensions, constraints, and indexes. |
 | `sql/dw/02_validate_warehouse_schema.sql` | Lists created warehouse tables, columns, and foreign keys. |
 | `scripts/build_warehouse_schema.py` | Executes and validates the Phase 5 warehouse schema. |
@@ -49,6 +50,7 @@ Use diagrams.net:
 4. Review `fact_trip` at the center and the surrounding dimensions.
 5. Open `diagrams/phase5_physical_schema.drawio`.
 6. Compare it with DBeaver's ER diagram for schema `dw`.
+7. Open `diagrams/phase5_fact_station_day_hour_schema.drawio` to show the dedicated schema for the aggregate fact table.
 
 Use DBeaver:
 
@@ -80,4 +82,3 @@ Main dimensions:
 - `dw.dim_rideable_type`
 
 The model is a hybrid star/snowflake schema: the facts connect directly to analytical dimensions, while station geography is normalized through `dim_station -> dim_geography`.
-
