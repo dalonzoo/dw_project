@@ -20,6 +20,8 @@ Grain: one station, one calendar day, and one start hour.
 
 This aggregate is designed for live demo queries where scanning the ride-level fact would be slower or visually noisy.
 
+The aggregate fact has a dedicated conceptual diagram in `diagrams/phase5_fact_station_day_hour_dfm.drawio`, parallel to the main ride-level DFM.
+
 ## Measures
 
 `fact_trip` contains additive or semi-additive measures that support OLAP aggregation:
@@ -141,4 +143,3 @@ The strongest Phase 5 demo path is:
 3. Run the DDL against `urban_night_mobility_dw`.
 4. Refresh schema `dw`.
 5. Use DBeaver ER Diagram on `fact_trip` to show the role-playing dimensions and the station-geography snowflake edge.
-

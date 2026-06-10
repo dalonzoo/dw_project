@@ -17,6 +17,7 @@ The phase produces:
 | --- | --- |
 | `docs/modeling_notes.md` | Explains grain, measures, dimensions, hierarchies, and star/snowflake choices. |
 | `diagrams/phase5_dfm.drawio` | Conceptual DFM diagram for diagrams.net. |
+| `diagrams/phase5_fact_station_day_hour_dfm.drawio` | Dedicated conceptual DFM diagram for the station-day-hour aggregate fact. |
 | `diagrams/phase5_physical_schema.drawio` | Physical warehouse overview for diagrams.net. |
 | `diagrams/phase5_fact_station_day_hour_schema.drawio` | Dedicated physical schema for the station-day-hour aggregate fact. |
 | `sql/dw/01_create_warehouse_tables.sql` | Creates the `dw` facts, dimensions, constraints, and indexes. |
@@ -48,9 +49,10 @@ Use diagrams.net:
 2. Select `File > Open From > Device`.
 3. Open `diagrams/phase5_dfm.drawio`.
 4. Review `fact_trip` at the center and the surrounding dimensions.
-5. Open `diagrams/phase5_physical_schema.drawio`.
-6. Compare it with DBeaver's ER diagram for schema `dw`.
-7. Open `diagrams/phase5_fact_station_day_hour_schema.drawio` to show the dedicated schema for the aggregate fact table.
+5. Open `diagrams/phase5_fact_station_day_hour_dfm.drawio` to review the logical schema for the aggregate fact table.
+6. Open `diagrams/phase5_physical_schema.drawio`.
+7. Compare it with DBeaver's ER diagram for schema `dw`.
+8. Open `diagrams/phase5_fact_station_day_hour_schema.drawio` to show the dedicated physical schema for the aggregate fact table.
 
 Use DBeaver:
 

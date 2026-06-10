@@ -1,0 +1,52 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Fact Station Day Hour DFM">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="fact_station_day_hour" value="FACT_STATION_DAY_HOUR&#xa;Aggregate fact&#xa;Grain: one station + one date + one hour&#xa;&#xa;Measures:&#xa;trip_starts&#xa;trip_ends&#xa;net_flow_count&#xa;night_trip_starts&#xa;member/casual starts&#xa;electric/classic starts&#xa;total_start_duration_seconds&#xa;avg_start_duration_minutes&#xa;total_start_distance_km" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;align=left;spacing=10;" vertex="1" parent="1">
+          <mxGeometry x="600" y="330" width="360" height="310" as="geometry" />
+        </mxCell>
+        <mxCell id="dim_date" value="DIM_DATE&#xa;date -> week -> month -> quarter -> season -> year&#xa;&#xa;Role: aggregate date" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="130" y="90" width="320" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="dim_time" value="DIM_TIME&#xa;hour -> part_of_day -> day_night_class&#xa;&#xa;Role: aggregate hour" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="620" y="90" width="320" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="dim_calendar_event" value="DIM_CALENDAR_EVENT&#xa;date -> holiday_window -> long_weekend -> holiday_type -> holiday_name&#xa;&#xa;Linked to aggregate date" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="90" width="360" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="dim_weather" value="DIM_WEATHER&#xa;weather_day -> condition_class -> severity_label&#xa;&#xa;Daily Central Park NOAA context&#xa;Linked to aggregate date" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="410" width="340" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="dim_station" value="DIM_STATION&#xa;station -> assigned geography&#xa;&#xa;Role: observed station for starts, ends, and net flow" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="140" y="390" width="330" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="dim_geography" value="DIM_GEOGRAPHY&#xa;NTA -> CDTA/community district -> borough -> city&#xa;&#xa;Reached through station for station-area roll-ups" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="130" y="700" width="370" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="note_user" value="Member/casual and classic/electric are stored as additive count measures in this aggregate fact, not as separate dimensions." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;spacing=10;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="650" y="730" width="390" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="e_date" edge="1" parent="1" source="dim_date" target="fact_station_day_hour" style="endArrow=block;html=1;rounded=0;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_time" edge="1" parent="1" source="dim_time" target="fact_station_day_hour" style="endArrow=block;html=1;rounded=0;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_event" edge="1" parent="1" source="dim_calendar_event" target="fact_station_day_hour" style="endArrow=block;html=1;rounded=0;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_weather" edge="1" parent="1" source="dim_weather" target="fact_station_day_hour" style="endArrow=block;html=1;rounded=0;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_station" edge="1" parent="1" source="dim_station" target="fact_station_day_hour" style="endArrow=block;html=1;rounded=0;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_station_geo" edge="1" parent="1" source="dim_station" target="dim_geography" value="snowflake edge" style="endArrow=block;html=1;rounded=0;dashed=1;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
