@@ -1,135 +1,108 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="760" viewBox="0 0 1600 760">
-  <defs>
-    <style>
-      .title { font: 700 38px Arial, Helvetica, sans-serif; fill: #253047; }
-      .subtitle { font: 20px Arial, Helvetica, sans-serif; fill: #4b5568; }
-      .table-title { font: 700 16px Arial, Helvetica, sans-serif; fill: #111827; }
-      .table-text { font: 13px Arial, Helvetica, sans-serif; fill: #111827; }
-      .small { font: 12px Arial, Helvetica, sans-serif; fill: #374151; }
-      .fact { fill: #f8d4d4; stroke: #b85450; stroke-width: 2; }
-      .dim-blue { fill: #dbeafe; stroke: #6c8ebf; stroke-width: 1.5; }
-      .dim-green { fill: #dcf2d8; stroke: #82b366; stroke-width: 1.5; }
-      .dim-yellow { fill: #fff2cc; stroke: #d6b656; stroke-width: 1.5; }
-      .dim-purple { fill: #eadcf0; stroke: #9673a6; stroke-width: 1.5; }
-      .agg { fill: #f4f4f5; stroke: #71717a; stroke-width: 1.5; }
-      .note-box { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 1.2; }
-      .line { stroke: #111827; stroke-width: 1.8; fill: none; }
-      .dash { stroke: #4b5563; stroke-width: 1.6; stroke-dasharray: 7 6; fill: none; }
-      .label { font: 12px Arial, Helvetica, sans-serif; fill: #374151; }
-    </style>
-    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L10,3 L0,6 Z" fill="#111827" />
-    </marker>
-    <marker id="arrowGray" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L10,3 L0,6 Z" fill="#4b5563" />
-    </marker>
-  </defs>
+  <rect x="0" y="0" width="1600" height="760" fill="#fff" />
 
-  <rect x="0" y="0" width="1600" height="760" fill="#ffffff" />
+  <!-- Background groups keep the visual language close to the DFM reference while this remains the physical ROLAP schema. -->
+  <ellipse cx="300" cy="210" rx="235" ry="125" fill="#d9d9d9" opacity="0.75" />
+  <ellipse cx="820" cy="125" rx="230" ry="110" fill="#d9d9d9" opacity="0.75" />
+  <ellipse cx="1290" cy="200" rx="240" ry="120" fill="#d9d9d9" opacity="0.75" />
+  <ellipse cx="285" cy="545" rx="250" ry="135" fill="#d9d9d9" opacity="0.75" />
+  <ellipse cx="1290" cy="540" rx="250" ry="130" fill="#d9d9d9" opacity="0.75" />
 
-  <g transform="translate(0,-95)">
+  <!-- Central ride-grain fact table -->
+  <rect x="610" y="285" width="380" height="245" fill="#fff" stroke="#333" stroke-width="2" />
+  <line x1="610" y1="330" x2="990" y2="330" stroke="#333" stroke-width="2" />
+  <text x="800" y="315" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="26" fill="#333">dw.fact_trip</text>
+  <text x="630" y="360" font-family="Georgia, 'Times New Roman', serif" font-size="21" fill="#333">PK fact_trip_key</text>
+  <text x="630" y="388" font-family="Georgia, 'Times New Roman', serif" font-size="21" fill="#333">UK ride_id</text>
+  <text x="630" y="420" font-family="Georgia, 'Times New Roman', serif" font-size="21" fill="#333">FK start/end date, time</text>
+  <text x="630" y="448" font-family="Georgia, 'Times New Roman', serif" font-size="21" fill="#333">FK event, weather</text>
+  <text x="630" y="476" font-family="Georgia, 'Times New Roman', serif" font-size="21" fill="#333">FK start/end station</text>
+  <text x="630" y="504" font-family="Georgia, 'Times New Roman', serif" font-size="21" fill="#333">FK start/end geography</text>
 
-  <!-- Dimension tables, top row -->
-  <rect x="70" y="150" width="285" height="135" rx="4" fill="#dbeafe" stroke="#6c8ebf" stroke-width="1.5" />
-  <text x="92" y="178" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#111827">dw.dim_date</text>
-  <text x="92" y="203" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">PK date_key</text>
-  <text x="92" y="225" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">UK date_value</text>
-  <text x="92" y="247" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">year, season, quarter, month, week</text>
-  <text x="92" y="269" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">day name, weekend flag</text>
+  <!-- Dimension tables -->
+  <rect x="85" y="125" width="350" height="135" fill="#fff" stroke="#333" stroke-width="1.8" />
+  <line x1="85" y1="165" x2="435" y2="165" stroke="#333" stroke-width="1.6" />
+  <text x="260" y="153" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="23" fill="#333">dw.dim_date</text>
+  <text x="125" y="195" font-family="Georgia, 'Times New Roman', serif" font-size="19" fill="#333">PK date_key</text>
+  <text x="125" y="222" font-family="Georgia, 'Times New Roman', serif" font-size="19" fill="#333">UK date_value</text>
+  <text x="125" y="249" font-family="Georgia, 'Times New Roman', serif" font-size="19" fill="#333">year, season, quarter, month, week</text>
 
-  <rect x="410" y="150" width="285" height="135" rx="4" fill="#dbeafe" stroke="#6c8ebf" stroke-width="1.5" />
-  <text x="432" y="178" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#111827">dw.dim_time</text>
-  <text x="432" y="203" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">PK time_key</text>
-  <text x="432" y="225" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">UK hour_number</text>
-  <text x="432" y="247" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">part_of_day, day_night_class</text>
-  <text x="432" y="269" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">night-hour flag</text>
+  <rect x="655" y="55" width="300" height="130" fill="#fff" stroke="#333" stroke-width="1.8" />
+  <line x1="655" y1="95" x2="955" y2="95" stroke="#333" stroke-width="1.6" />
+  <text x="805" y="83" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="23" fill="#333">dw.dim_time</text>
+  <text x="675" y="125" font-family="Georgia, 'Times New Roman', serif" font-size="19" fill="#333">PK time_key</text>
+  <text x="675" y="152" font-family="Georgia, 'Times New Roman', serif" font-size="19" fill="#333">UK hour_number</text>
+  <text x="675" y="179" font-family="Georgia, 'Times New Roman', serif" font-size="19" fill="#333">part_of_day, day_night_class</text>
 
-  <rect x="760" y="150" width="335" height="135" rx="4" fill="#dcf2d8" stroke="#82b366" stroke-width="1.5" />
-  <text x="782" y="178" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#111827">dw.dim_calendar_event</text>
-  <text x="782" y="203" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">PK calendar_event_key</text>
-  <text x="782" y="225" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">UK date_value</text>
-  <text x="782" y="247" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">holiday_window, event_group</text>
-  <text x="782" y="269" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">holiday flags, holiday name/type</text>
+  <rect x="1090" y="115" width="325" height="140" fill="#fff" stroke="#333" stroke-width="1.8" />
+  <line x1="1090" y1="155" x2="1415" y2="155" stroke="#333" stroke-width="1.6" />
+  <text x="1253" y="143" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="23" fill="#333">dw.dim_calendar_event</text>
+  <text x="1110" y="185" font-family="Georgia, 'Times New Roman', serif" font-size="19" fill="#333">PK calendar_event_key</text>
+  <text x="1110" y="212" font-family="Georgia, 'Times New Roman', serif" font-size="19" fill="#333">UK date_value</text>
+  <text x="1110" y="239" font-family="Georgia, 'Times New Roman', serif" font-size="19" fill="#333">holiday_window, event_group</text>
 
-  <rect x="1160" y="150" width="335" height="135" rx="4" fill="#dcf2d8" stroke="#82b366" stroke-width="1.5" />
-  <text x="1182" y="178" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#111827">dw.dim_weather</text>
-  <text x="1182" y="203" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">PK weather_key</text>
-  <text x="1182" y="225" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">UK observation_date</text>
-  <text x="1182" y="247" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">condition_class, severity_label</text>
-  <text x="1182" y="269" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">temperature, precipitation, snow, wind</text>
+  <rect x="1110" y="405" width="295" height="135" fill="#fff" stroke="#333" stroke-width="1.8" />
+  <line x1="1110" y1="445" x2="1405" y2="445" stroke="#333" stroke-width="1.6" />
+  <text x="1258" y="433" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="23" fill="#333">dw.dim_weather</text>
+  <text x="1130" y="475" font-family="Georgia, 'Times New Roman', serif" font-size="19" fill="#333">PK weather_key</text>
+  <text x="1130" y="502" font-family="Georgia, 'Times New Roman', serif" font-size="19" fill="#333">UK observation_date</text>
+  <text x="1130" y="529" font-family="Georgia, 'Times New Roman', serif" font-size="19" fill="#333">condition_class, severity_label</text>
 
-  <!-- Left snowflake dimension -->
-  <rect x="90" y="405" width="315" height="150" rx="4" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5" />
-  <text x="112" y="433" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#111827">dw.dim_station</text>
-  <text x="112" y="458" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">PK station_key</text>
-  <text x="112" y="480" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">UK station_id</text>
-  <text x="112" y="502" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">FK geography_key</text>
-  <text x="112" y="524" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">station name, coordinates, assignment status</text>
+  <rect x="110" y="405" width="300" height="145" fill="#fff" stroke="#333" stroke-width="1.8" />
+  <line x1="110" y1="445" x2="410" y2="445" stroke="#333" stroke-width="1.6" />
+  <text x="260" y="433" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="23" fill="#333">dw.dim_station</text>
+  <text x="130" y="475" font-family="Georgia, 'Times New Roman', serif" font-size="19" fill="#333">PK station_key</text>
+  <text x="130" y="502" font-family="Georgia, 'Times New Roman', serif" font-size="19" fill="#333">UK station_id</text>
+  <text x="130" y="529" font-family="Georgia, 'Times New Roman', serif" font-size="19" fill="#333">FK geography_key</text>
 
-  <rect x="90" y="655" width="335" height="150" rx="4" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5" />
-  <text x="112" y="683" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#111827">dw.dim_geography</text>
-  <text x="112" y="708" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">PK geography_key</text>
-  <text x="112" y="730" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">UK geography_code</text>
-  <text x="112" y="752" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">NTA, CDTA, borough, city</text>
-  <text x="112" y="774" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">PostGIS geometry</text>
+  <rect x="110" y="610" width="330" height="135" fill="#fff" stroke="#333" stroke-width="1.8" />
+  <line x1="110" y1="650" x2="440" y2="650" stroke="#333" stroke-width="1.6" />
+  <text x="275" y="638" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="23" fill="#333">dw.dim_geography</text>
+  <text x="130" y="680" font-family="Georgia, 'Times New Roman', serif" font-size="19" fill="#333">PK geography_key</text>
+  <text x="130" y="707" font-family="Georgia, 'Times New Roman', serif" font-size="19" fill="#333">UK geography_code</text>
+  <text x="130" y="728" font-family="Georgia, 'Times New Roman', serif" font-size="19" fill="#333">NTA, CDTA, borough, city</text>
 
-  <!-- Main fact -->
-  <rect x="625" y="360" width="390" height="260" rx="4" fill="#f8d4d4" stroke="#b85450" stroke-width="2" />
-  <text x="650" y="390" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#111827">dw.fact_trip</text>
-  <text x="650" y="415" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">PK fact_trip_key</text>
-  <text x="650" y="437" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">UK ride_id</text>
-  <text x="650" y="464" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">FK start/end date, start/end time</text>
-  <text x="650" y="486" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">FK calendar event, weather</text>
-  <text x="650" y="508" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">FK start/end station</text>
-  <text x="650" y="530" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">FK start/end geography</text>
-  <text x="650" y="552" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">FK user type, rideable type</text>
-  <text x="650" y="584" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">Measures: trip counts, duration, distance,</text>
-  <text x="650" y="606" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">night flag, rider counts, flow indicators</text>
+  <rect x="615" y="610" width="245" height="105" fill="#fff" stroke="#333" stroke-width="1.8" />
+  <line x1="615" y1="650" x2="860" y2="650" stroke="#333" stroke-width="1.6" />
+  <text x="738" y="638" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="23" fill="#333">dw.dim_user_type</text>
+  <text x="635" y="680" font-family="Georgia, 'Times New Roman', serif" font-size="19" fill="#333">PK user_type_key</text>
+  <text x="635" y="707" font-family="Georgia, 'Times New Roman', serif" font-size="19" fill="#333">UK rider_type</text>
 
-  <!-- Compact dimensions -->
-  <rect x="600" y="710" width="250" height="95" rx="4" fill="#eadcf0" stroke="#9673a6" stroke-width="1.5" />
-  <text x="622" y="740" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#111827">dw.dim_user_type</text>
-  <text x="622" y="765" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">PK user_type_key</text>
-  <text x="622" y="787" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">UK rider_type</text>
+  <rect x="910" y="610" width="285" height="105" fill="#fff" stroke="#333" stroke-width="1.8" />
+  <line x1="910" y1="650" x2="1195" y2="650" stroke="#333" stroke-width="1.6" />
+  <text x="1053" y="638" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="23" fill="#333">dw.dim_rideable_type</text>
+  <text x="930" y="680" font-family="Georgia, 'Times New Roman', serif" font-size="19" fill="#333">PK rideable_type_key</text>
+  <text x="930" y="707" font-family="Georgia, 'Times New Roman', serif" font-size="19" fill="#333">UK rideable_type</text>
 
-  <rect x="900" y="710" width="275" height="95" rx="4" fill="#eadcf0" stroke="#9673a6" stroke-width="1.5" />
-  <text x="922" y="740" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#111827">dw.dim_rideable_type</text>
-  <text x="922" y="765" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">PK rideable_type_key</text>
-  <text x="922" y="787" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">UK rideable_type</text>
+  <!-- Secondary aggregate fact -->
+  <rect x="1245" y="600" width="320" height="140" fill="#fff" stroke="#777" stroke-width="1.8" />
+  <line x1="1245" y1="640" x2="1565" y2="640" stroke="#777" stroke-width="1.6" />
+  <text x="1405" y="628" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="23" fill="#333">dw.fact_station_day_hour</text>
+  <text x="1265" y="670" font-family="Georgia, 'Times New Roman', serif" font-size="18" fill="#333">aggregate fact table</text>
+  <text x="1265" y="696" font-family="Georgia, 'Times New Roman', serif" font-size="18" fill="#333">UK station + date + time</text>
+  <text x="1265" y="722" font-family="Georgia, 'Times New Roman', serif" font-size="18" fill="#333">starts, ends, net_flow</text>
 
-  <!-- Aggregate fact -->
-  <rect x="1180" y="425" width="340" height="170" rx="4" fill="#f4f4f5" stroke="#71717a" stroke-width="1.5" />
-  <text x="1202" y="455" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#111827">dw.fact_station_day_hour</text>
-  <text x="1202" y="480" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">Aggregate fact table</text>
-  <text x="1202" y="502" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">PK fact_station_day_hour_key</text>
-  <text x="1202" y="524" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">UK station_key + date_key + time_key</text>
-  <text x="1202" y="546" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">FK station, date, time, event, weather</text>
-  <text x="1202" y="568" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">Measures: starts, ends, net_flow</text>
-
-  <!-- Note -->
-  <rect x="1205" y="675" width="315" height="130" rx="4" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" />
-  <text x="1228" y="705" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#111827">Modeling statement</text>
-  <text x="1228" y="732" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#374151">Mostly star-shaped around dw.fact_trip.</text>
-  <text x="1228" y="754" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#374151">Controlled snowflake edge:</text>
-  <text x="1228" y="776" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#374151">dw.dim_station -&gt; dw.dim_geography.</text>
-  <text x="1228" y="798" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#374151">Direct geography FKs support OD roll-ups.</text>
-
-  <!-- Star edges to main fact -->
-  <path d="M355 285 C465 335, 565 365, 625 405" stroke="#111827" stroke-width="1.8" fill="none" marker-end="url(#arrow)" />
-  <path d="M550 285 C615 315, 650 345, 675 360" stroke="#111827" stroke-width="1.8" fill="none" marker-end="url(#arrow)" />
-  <path d="M925 285 C905 315, 880 340, 860 360" stroke="#111827" stroke-width="1.8" fill="none" marker-end="url(#arrow)" />
-  <path d="M1215 285 C1130 330, 1060 400, 1015 470" stroke="#111827" stroke-width="1.8" fill="none" marker-end="url(#arrow)" />
-  <path d="M405 485 C500 485, 570 485, 625 485" stroke="#111827" stroke-width="1.8" fill="none" marker-end="url(#arrow)" />
-  <path d="M425 730 C515 650, 580 575, 625 535" stroke="#111827" stroke-width="1.8" fill="none" marker-end="url(#arrow)" />
-  <path d="M725 710 C735 665, 750 640, 765 620" stroke="#111827" stroke-width="1.8" fill="none" marker-end="url(#arrow)" />
-  <path d="M1010 710 C980 670, 950 640, 925 620" stroke="#111827" stroke-width="1.8" fill="none" marker-end="url(#arrow)" />
+  <!-- Foreign-key edges -->
+  <line x1="435" y1="255" x2="610" y2="370" stroke="#333" stroke-width="2" />
+  <text x="435" y="298" font-family="Georgia, 'Times New Roman', serif" font-size="19" font-style="italic" fill="#333">start/end date FK</text>
+  <line x1="805" y1="185" x2="805" y2="285" stroke="#333" stroke-width="2" />
+  <text x="820" y="240" font-family="Georgia, 'Times New Roman', serif" font-size="19" font-style="italic" fill="#333">start/end time FK</text>
+  <line x1="1090" y1="255" x2="990" y2="375" stroke="#333" stroke-width="2" />
+  <text x="1008" y="303" font-family="Georgia, 'Times New Roman', serif" font-size="19" font-style="italic" fill="#333">event FK</text>
+  <line x1="1110" y1="470" x2="990" y2="455" stroke="#333" stroke-width="2" />
+  <text x="1010" y="445" font-family="Georgia, 'Times New Roman', serif" font-size="19" font-style="italic" fill="#333">weather FK</text>
+  <line x1="410" y1="475" x2="610" y2="455" stroke="#333" stroke-width="2" />
+  <text x="438" y="450" font-family="Georgia, 'Times New Roman', serif" font-size="19" font-style="italic" fill="#333">start/end station FK</text>
+  <line x1="440" y1="640" x2="610" y2="500" stroke="#333" stroke-width="2" />
+  <text x="450" y="580" font-family="Georgia, 'Times New Roman', serif" font-size="19" font-style="italic" fill="#333">start/end geography FK</text>
+  <line x1="740" y1="610" x2="750" y2="530" stroke="#333" stroke-width="2" />
+  <line x1="1045" y1="610" x2="910" y2="530" stroke="#333" stroke-width="2" />
 
   <!-- Snowflake edge -->
-  <path d="M245 555 L245 655" stroke="#4b5563" stroke-width="1.6" stroke-dasharray="7 6" fill="none" marker-end="url(#arrowGray)" />
-  <text x="264" y="614" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#374151">snowflake FK</text>
+  <line x1="260" y1="550" x2="275" y2="610" stroke="#333" stroke-width="2" stroke-dasharray="8 6" />
+  <text x="290" y="585" font-family="Georgia, 'Times New Roman', serif" font-size="19" font-style="italic" fill="#333">snowflake FK</text>
 
-  <!-- Aggregate edges, dashed because it is secondary aggregate fact -->
-  <path d="M1180 505 C1125 500, 1080 500, 1015 500" stroke="#4b5563" stroke-width="1.6" stroke-dasharray="7 6" fill="none" marker-end="url(#arrowGray)" />
-  <text x="1060" y="486" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#374151">secondary aggregate</text>
-  </g>
+  <!-- Aggregate fact edges -->
+  <line x1="1245" y1="670" x2="990" y2="500" stroke="#777" stroke-width="2" stroke-dasharray="8 6" />
+  <text x="1080" y="585" font-family="Georgia, 'Times New Roman', serif" font-size="19" font-style="italic" fill="#555">secondary aggregate</text>
 </svg>
