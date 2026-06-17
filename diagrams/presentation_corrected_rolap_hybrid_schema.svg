@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="760" viewBox="0 0 1600 760">
+  <defs>
+    <style>
+      .title { font: 700 38px Arial, Helvetica, sans-serif; fill: #253047; }
+      .subtitle { font: 20px Arial, Helvetica, sans-serif; fill: #4b5568; }
+      .table-title { font: 700 16px Arial, Helvetica, sans-serif; fill: #111827; }
+      .table-text { font: 13px Arial, Helvetica, sans-serif; fill: #111827; }
+      .small { font: 12px Arial, Helvetica, sans-serif; fill: #374151; }
+      .fact { fill: #f8d4d4; stroke: #b85450; stroke-width: 2; }
+      .dim-blue { fill: #dbeafe; stroke: #6c8ebf; stroke-width: 1.5; }
+      .dim-green { fill: #dcf2d8; stroke: #82b366; stroke-width: 1.5; }
+      .dim-yellow { fill: #fff2cc; stroke: #d6b656; stroke-width: 1.5; }
+      .dim-purple { fill: #eadcf0; stroke: #9673a6; stroke-width: 1.5; }
+      .agg { fill: #f4f4f5; stroke: #71717a; stroke-width: 1.5; }
+      .note-box { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 1.2; }
+      .line { stroke: #111827; stroke-width: 1.8; fill: none; }
+      .dash { stroke: #4b5563; stroke-width: 1.6; stroke-dasharray: 7 6; fill: none; }
+      .label { font: 12px Arial, Helvetica, sans-serif; fill: #374151; }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,3 L0,6 Z" fill="#111827" />
+    </marker>
+    <marker id="arrowGray" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,3 L0,6 Z" fill="#4b5563" />
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1600" height="760" fill="#ffffff" />
+
+  <g transform="translate(0,-95)">
+
+  <!-- Dimension tables, top row -->
+  <rect x="70" y="150" width="285" height="135" rx="4" fill="#dbeafe" stroke="#6c8ebf" stroke-width="1.5" />
+  <text x="92" y="178" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#111827">dw.dim_date</text>
+  <text x="92" y="203" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">PK date_key</text>
+  <text x="92" y="225" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">UK date_value</text>
+  <text x="92" y="247" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">year, season, quarter, month, week</text>
+  <text x="92" y="269" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">day name, weekend flag</text>
+
+  <rect x="410" y="150" width="285" height="135" rx="4" fill="#dbeafe" stroke="#6c8ebf" stroke-width="1.5" />
+  <text x="432" y="178" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#111827">dw.dim_time</text>
+  <text x="432" y="203" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">PK time_key</text>
+  <text x="432" y="225" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">UK hour_number</text>
+  <text x="432" y="247" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">part_of_day, day_night_class</text>
+  <text x="432" y="269" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">night-hour flag</text>
+
+  <rect x="760" y="150" width="335" height="135" rx="4" fill="#dcf2d8" stroke="#82b366" stroke-width="1.5" />
+  <text x="782" y="178" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#111827">dw.dim_calendar_event</text>
+  <text x="782" y="203" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">PK calendar_event_key</text>
+  <text x="782" y="225" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">UK date_value</text>
+  <text x="782" y="247" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">holiday_window, event_group</text>
+  <text x="782" y="269" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">holiday flags, holiday name/type</text>
+
+  <rect x="1160" y="150" width="335" height="135" rx="4" fill="#dcf2d8" stroke="#82b366" stroke-width="1.5" />
+  <text x="1182" y="178" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#111827">dw.dim_weather</text>
+  <text x="1182" y="203" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">PK weather_key</text>
+  <text x="1182" y="225" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">UK observation_date</text>
+  <text x="1182" y="247" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">condition_class, severity_label</text>
+  <text x="1182" y="269" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">temperature, precipitation, snow, wind</text>
+
+  <!-- Left snowflake dimension -->
+  <rect x="90" y="405" width="315" height="150" rx="4" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5" />
+  <text x="112" y="433" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#111827">dw.dim_station</text>
+  <text x="112" y="458" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">PK station_key</text>
+  <text x="112" y="480" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">UK station_id</text>
+  <text x="112" y="502" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">FK geography_key</text>
+  <text x="112" y="524" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">station name, coordinates, assignment status</text>
+
+  <rect x="90" y="655" width="335" height="150" rx="4" fill="#fff2cc" stroke="#d6b656" stroke-width="1.5" />
+  <text x="112" y="683" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#111827">dw.dim_geography</text>
+  <text x="112" y="708" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">PK geography_key</text>
+  <text x="112" y="730" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">UK geography_code</text>
+  <text x="112" y="752" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">NTA, CDTA, borough, city</text>
+  <text x="112" y="774" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">PostGIS geometry</text>
+
+  <!-- Main fact -->
+  <rect x="625" y="360" width="390" height="260" rx="4" fill="#f8d4d4" stroke="#b85450" stroke-width="2" />
+  <text x="650" y="390" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#111827">dw.fact_trip</text>
+  <text x="650" y="415" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">PK fact_trip_key</text>
+  <text x="650" y="437" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">UK ride_id</text>
+  <text x="650" y="464" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">FK start/end date, start/end time</text>
+  <text x="650" y="486" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">FK calendar event, weather</text>
+  <text x="650" y="508" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">FK start/end station</text>
+  <text x="650" y="530" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">FK start/end geography</text>
+  <text x="650" y="552" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">FK user type, rideable type</text>
+  <text x="650" y="584" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">Measures: trip counts, duration, distance,</text>
+  <text x="650" y="606" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">night flag, rider counts, flow indicators</text>
+
+  <!-- Compact dimensions -->
+  <rect x="600" y="710" width="250" height="95" rx="4" fill="#eadcf0" stroke="#9673a6" stroke-width="1.5" />
+  <text x="622" y="740" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#111827">dw.dim_user_type</text>
+  <text x="622" y="765" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">PK user_type_key</text>
+  <text x="622" y="787" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">UK rider_type</text>
+
+  <rect x="900" y="710" width="275" height="95" rx="4" fill="#eadcf0" stroke="#9673a6" stroke-width="1.5" />
+  <text x="922" y="740" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#111827">dw.dim_rideable_type</text>
+  <text x="922" y="765" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">PK rideable_type_key</text>
+  <text x="922" y="787" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">UK rideable_type</text>
+
+  <!-- Aggregate fact -->
+  <rect x="1180" y="425" width="340" height="170" rx="4" fill="#f4f4f5" stroke="#71717a" stroke-width="1.5" />
+  <text x="1202" y="455" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#111827">dw.fact_station_day_hour</text>
+  <text x="1202" y="480" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">Aggregate fact table</text>
+  <text x="1202" y="502" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">PK fact_station_day_hour_key</text>
+  <text x="1202" y="524" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">UK station_key + date_key + time_key</text>
+  <text x="1202" y="546" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">FK station, date, time, event, weather</text>
+  <text x="1202" y="568" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#111827">Measures: starts, ends, net_flow</text>
+
+  <!-- Note -->
+  <rect x="1205" y="675" width="315" height="130" rx="4" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.2" />
+  <text x="1228" y="705" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#111827">Modeling statement</text>
+  <text x="1228" y="732" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#374151">Mostly star-shaped around dw.fact_trip.</text>
+  <text x="1228" y="754" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#374151">Controlled snowflake edge:</text>
+  <text x="1228" y="776" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#374151">dw.dim_station -&gt; dw.dim_geography.</text>
+  <text x="1228" y="798" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#374151">Direct geography FKs support OD roll-ups.</text>
+
+  <!-- Star edges to main fact -->
+  <path d="M355 285 C465 335, 565 365, 625 405" stroke="#111827" stroke-width="1.8" fill="none" marker-end="url(#arrow)" />
+  <path d="M550 285 C615 315, 650 345, 675 360" stroke="#111827" stroke-width="1.8" fill="none" marker-end="url(#arrow)" />
+  <path d="M925 285 C905 315, 880 340, 860 360" stroke="#111827" stroke-width="1.8" fill="none" marker-end="url(#arrow)" />
+  <path d="M1215 285 C1130 330, 1060 400, 1015 470" stroke="#111827" stroke-width="1.8" fill="none" marker-end="url(#arrow)" />
+  <path d="M405 485 C500 485, 570 485, 625 485" stroke="#111827" stroke-width="1.8" fill="none" marker-end="url(#arrow)" />
+  <path d="M425 730 C515 650, 580 575, 625 535" stroke="#111827" stroke-width="1.8" fill="none" marker-end="url(#arrow)" />
+  <path d="M725 710 C735 665, 750 640, 765 620" stroke="#111827" stroke-width="1.8" fill="none" marker-end="url(#arrow)" />
+  <path d="M1010 710 C980 670, 950 640, 925 620" stroke="#111827" stroke-width="1.8" fill="none" marker-end="url(#arrow)" />
+
+  <!-- Snowflake edge -->
+  <path d="M245 555 L245 655" stroke="#4b5563" stroke-width="1.6" stroke-dasharray="7 6" fill="none" marker-end="url(#arrowGray)" />
+  <text x="264" y="614" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#374151">snowflake FK</text>
+
+  <!-- Aggregate edges, dashed because it is secondary aggregate fact -->
+  <path d="M1180 505 C1125 500, 1080 500, 1015 500" stroke="#4b5563" stroke-width="1.6" stroke-dasharray="7 6" fill="none" marker-end="url(#arrowGray)" />
+  <text x="1060" y="486" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#374151">secondary aggregate</text>
+  </g>
+</svg>
