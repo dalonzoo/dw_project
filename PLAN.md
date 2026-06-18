@@ -1,18 +1,18 @@
 # Urban Night Mobility Data Warehouse Roadmap
 
 ## How To Use This File
-- This file is the project source of truth. Every person or model working on the project must update it before stopping.
+- This file is the project source of truth. Every contributor working on the project must update it before stopping.
 - Status values: `TODO`, `DOING`, `BLOCKED`, `DONE`.
 - Before stopping work, update `Current Resume Point`, the relevant phase status, and `Progress Log`.
 - Do not mark a task as `DONE` unless its "Done when" checks are satisfied.
 - The proposal is approved, so implementation can start.
-- If a future worker stops mid-task, they must leave a short note in `Progress Log` explaining what changed, what was verified, and what should happen next.
+- If work stops mid-task, leave a short note in `Progress Log` explaining what changed, what was verified, and what should happen next.
 
 ## Current Resume Point
-- Overall status: `DOING`.
-- Next step: prepare Phase 9 presentation and live demo.
-- Current phase: Phase 9 - Presentation And Demo.
-- Last updated: 2026-06-05.
+- Overall status: `DONE`.
+- Next step: project complete; send or present final materials as needed.
+- Current phase: Completed project.
+- Last updated: 2026-06-18.
 
 ## Project Goal And Grade Strategy
 Build a PostgreSQL/PostGIS data warehouse that analyzes Citi Bike urban night mobility in NYC, enriched with weather, holidays, and geographic boundaries. The project aims for the highest grade by showing:
@@ -275,29 +275,29 @@ Done when:
 - The README explains how to reproduce the checks.
 
 ### Phase 9 - Presentation And Demo
-Status: `TODO`
+Status: `DONE`
 
 Goal: prepare a clear 10-15 minute presentation plus 5 minute live demo.
 
 Slide outline:
-- [ ] Problem and motivation.
-- [ ] Data sources and integration challenge.
-- [ ] ETL architecture: staging, reconciled layer, warehouse.
-- [ ] DFM and dimensional hierarchies.
-- [ ] Physical star/snowflake schema.
-- [ ] OLAP sessions and main insights.
-- [ ] Limitations and possible extensions.
-- [ ] Demo instructions.
+- [x] Problem and motivation.
+- [x] Data sources and integration challenge.
+- [x] ETL architecture: staging, reconciled layer, warehouse.
+- [x] DFM and dimensional hierarchies.
+- [x] Physical star/snowflake schema.
+- [x] OLAP sessions and main insights.
+- [x] Limitations and possible extensions.
+- [x] Demo instructions.
 
 Demo checklist:
-- [ ] DBeaver opens and connects to the PostgreSQL database.
-- [ ] Database starts correctly.
-- [ ] Warehouse tables are populated.
-- [ ] Schemas `staging`, `reconciled`, and `dw` are visible in DBeaver.
-- [ ] Key tables are ready to show: `fact_trip`, `fact_station_day_hour`, `dim_date`, `dim_station`, `dim_geography`, and `dim_weather`.
-- [ ] Selected OLAP queries run within the available time.
-- [ ] At least one PostGIS geographic enrichment example is ready to show or explain.
-- [ ] Results shown in terminal, database client, notebook, or exported report.
+- [x] DBeaver opens and connects to the PostgreSQL database.
+- [x] Database starts correctly.
+- [x] Warehouse tables are populated.
+- [x] Schemas `staging`, `reconciled`, and `dw` are visible in DBeaver.
+- [x] Key tables are ready to show: `fact_trip`, `fact_station_day_hour`, `dim_date`, `dim_station`, `dim_geography`, and `dim_weather`.
+- [x] Selected OLAP queries run within the available time.
+- [x] At least one PostGIS geographic enrichment example is ready to show or explain.
+- [x] Results shown in terminal, database client, notebook, or exported report.
 
 Done when:
 - Slides fit 10-15 minutes.
@@ -310,12 +310,12 @@ Done when:
 - [x] DFM completed.
 - [x] Star/snowflake schema implemented in PostgreSQL.
 - [x] PostgreSQL/PostGIS environment reproducible.
-- [ ] DBeaver demo connection configured and tested.
+- [x] DBeaver demo connection configured and tested.
 - [x] ETL scripts run end to end.
 - [x] At least 3 non-trivial dimensional hierarchies are visible and used.
 - [x] At least 5 OLAP analyses are implemented and interpreted.
 - [x] README explains setup, data acquisition, ETL, warehouse build, analysis, and quality checks.
-- [ ] Slides and live demo are ready.
+- [x] Slides and live demo are ready.
 
 ## Progress Log
 - 2026-05-05: Initial proposal and roadmap prepared while approval was still pending.
@@ -335,6 +335,7 @@ Done when:
 - 2026-06-04: Completed Phase 6 warehouse population for the January 2024 development sample. Added `sql/dw/03_load_warehouse.sql`, `sql/dw/04_validate_warehouse_load.sql`, `scripts/build_warehouse.py`, and `docs/phase6_warehouse_population.md`. Local validation populated 1,881,951 ride-grain facts and 801,443 station-day-hour aggregate facts. Fact counts reconcile exactly with `reconciled.trip`, aggregate starts and ends both sum to 1,881,951, and night-trip totals match at 285,097. Current resume point moved to Phase 7 OLAP analysis.
 - 2026-06-05: Completed Phase 7 OLAP analysis on the populated January 2024 dimensional warehouse. Added `sql/olap/01_olap_analysis.sql` with seven DBeaver-ready OLAP analyses covering night demand, weather impact by rider type, station inflow/outflow imbalance, rideable type usage under weather severity, night origin-destination corridors, holiday and long-weekend effects, and hourly night mobility profiles. Executed the OLAP SQL successfully with `ON_ERROR_STOP=1` and documented the main findings in `docs/phase7_olap_analysis.md`. Current resume point moved to Phase 8 quality checks and reproducibility validation.
 - 2026-06-05: Completed Phase 8 quality checks and reproducibility support. Added `sql/quality/01_quality_checks.sql`, `scripts/run_quality_checks.py`, and `docs/phase8_quality_reproducibility.md`. The checks cover source/staging row-count reconciliation, accepted/rejected trip accounting, duplicate ride IDs, invalid timestamps and durations, station geographic enrichment coverage, calendar/weather coverage, fact dimension key integrity, aggregate fact reconciliation, and measure sanity. Fixed README formatting around OLAP execution, added quality-check instructions, updated `scripts/README.md`, and moved the current resume point to Phase 9 presentation and demo preparation.
+- 2026-06-18: Finalized the roadmap wording, completed Phase 9 presentation and demo tracking, and marked the project as complete.
 
 
 
