@@ -63,7 +63,7 @@
   <circle cx="735" cy="185" r="12" fill="#111" />
   <circle cx="735" cy="105" r="12" fill="#111" />
   <text x="815" y="252" font-family="Georgia, 'Times New Roman', serif" font-size="24" fill="#333">hour</text>
-  <text x="585" y="190" font-family="Georgia, 'Times New Roman', serif" font-size="24" fill="#333">part_of_day</text>
+  <text x="735" y="190" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="24" fill="#333">part_of_day</text>
   <text x="585" y="105" font-family="Georgia, 'Times New Roman', serif" font-size="24" fill="#333">day_night_class</text>
   
   <text x="800" y="285" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="22" font-style="italic" fill="#333">start/end time</text>
@@ -71,28 +71,28 @@
   <!-- Calendar event context -->
   <line x1="975" y1="390" x2="1185" y2="280" stroke="#333" stroke-width="2" />
   <line x1="1185" y1="280" x2="1120" y2="190" stroke="#333" stroke-width="2" />
-  <line x1="1185" y1="280" x2="1290" y2="190" stroke="#333" stroke-width="2" />
-  <line x1="1120" y1="190" x2="1080" y2="130" stroke="#333" stroke-width="1.6" stroke-dasharray="6 5" />
-  <line x1="1120" y1="190" x2="1075" y2="230" stroke="#333" stroke-width="1.6" stroke-dasharray="6 5" />
-  <line x1="1290" y1="190" x2="1400" y2="145" stroke="#333" stroke-width="1.6" stroke-dasharray="6 5" />
-  <line x1="1290" y1="190" x2="1415" y2="225" stroke="#333" stroke-width="1.6" stroke-dasharray="6 5" />
-  <line x1="1290" y1="190" x2="1365" y2="285" stroke="#333" stroke-width="1.6" stroke-dasharray="6 5" />
+  <line x1="1185" y1="280" x2="1335" y2="190" stroke="#333" stroke-width="2" />
+  <line x1="1120" y1="190" x2="1100" y2="130" stroke="#333" stroke-width="1.6" stroke-dasharray="6 5" />
+  <line x1="1120" y1="190" x2="1100" y2="235" stroke="#333" stroke-width="1.6" stroke-dasharray="6 5" />
+  <line x1="1335" y1="190" x2="1440" y2="145" stroke="#333" stroke-width="1.6" stroke-dasharray="6 5" />
+  <line x1="1335" y1="190" x2="1450" y2="225" stroke="#333" stroke-width="1.6" stroke-dasharray="6 5" />
+  <line x1="1335" y1="190" x2="1400" y2="285" stroke="#333" stroke-width="1.6" stroke-dasharray="6 5" />
   <circle cx="1185" cy="280" r="12" fill="#111" />
   <circle cx="1120" cy="190" r="12" fill="#111" />
-  <circle cx="1290" cy="190" r="12" fill="#111" />
-  <circle cx="1080" cy="130" r="9" fill="#fff" stroke="#111" stroke-width="3" />
-  <circle cx="1075" cy="230" r="9" fill="#fff" stroke="#111" stroke-width="3" />
-  <circle cx="1400" cy="145" r="9" fill="#fff" stroke="#111" stroke-width="3" />
-  <circle cx="1415" cy="225" r="9" fill="#fff" stroke="#111" stroke-width="3" />
-  <circle cx="1365" cy="285" r="9" fill="#fff" stroke="#111" stroke-width="3" />
+  <circle cx="1335" cy="190" r="12" fill="#111" />
+  <circle cx="1100" cy="130" r="9" fill="#fff" stroke="#111" stroke-width="3" />
+  <circle cx="1100" cy="235" r="9" fill="#fff" stroke="#111" stroke-width="3" />
+  <circle cx="1440" cy="145" r="9" fill="#fff" stroke="#111" stroke-width="3" />
+  <circle cx="1450" cy="225" r="9" fill="#fff" stroke="#111" stroke-width="3" />
+  <circle cx="1400" cy="285" r="9" fill="#fff" stroke="#111" stroke-width="3" />
   <text x="1198" y="286" font-family="Georgia, 'Times New Roman', serif" font-size="24" fill="#333">date</text>
-  <text x="920" y="192" font-family="Georgia, 'Times New Roman', serif" font-size="24" fill="#333">holiday_window</text>
-  <text x="1305" y="195" font-family="Georgia, 'Times New Roman', serif" font-size="24" fill="#333">event_group</text>
-  <text x="910" y="130" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#333">holiday_name*</text>
-  <text x="895" y="235" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#333">holiday_type*</text>
-  <text x="1412" y="150" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#333">public_holiday</text>
-  <text x="1428" y="230" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#333">bridge_day</text>
-  <text x="1378" y="290" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#333">long_weekend</text>
+  <text x="1138" y="198" font-family="Georgia, 'Times New Roman', serif" font-size="24" fill="#333">holiday_window</text>
+  <text x="1360" y="205" font-family="Georgia, 'Times New Roman', serif" font-size="24" fill="#333">event_group</text>
+  <text x="1115" y="130" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#333">holiday_name*</text>
+  <text x="1115" y="238" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#333">holiday_type*</text>
+  <text x="1452" y="150" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#333">public_holiday</text>
+  <text x="1462" y="230" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#333">bridge_day</text>
+  <text x="1412" y="290" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#333">long_weekend</text>
   <text x="1195" y="330" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="22" font-style="italic" fill="#333">start-date context</text>
 
   <!-- Station/geography hierarchy -->
@@ -120,28 +120,28 @@
   <text x="375" y="450" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="22" font-style="italic" fill="#333">origin/destination</text>
 
   <!-- Weather context -->
-  <line x1="975" y1="455" x2="1210" y2="470" stroke="#333" stroke-width="2" />
-  <line x1="1210" y1="470" x2="1275" y2="545" stroke="#333" stroke-width="2" />
-  <line x1="1210" y1="470" x2="1205" y2="610" stroke="#333" stroke-width="2" />
-  <line x1="1210" y1="470" x2="1320" y2="430" stroke="#333" stroke-width="1.6" stroke-dasharray="6 5" />
-  <line x1="1210" y1="470" x2="1390" y2="470" stroke="#333" stroke-width="1.6" stroke-dasharray="6 5" />
-  <line x1="1210" y1="470" x2="1390" y2="515" stroke="#333" stroke-width="1.6" stroke-dasharray="6 5" />
-  <line x1="1210" y1="470" x2="1345" y2="585" stroke="#333" stroke-width="1.6" stroke-dasharray="6 5" />
-  <circle cx="1210" cy="470" r="12" fill="#111" />
+  <line x1="975" y1="455" x2="1175" y2="470" stroke="#333" stroke-width="2" />
+  <line x1="1175" y1="470" x2="1275" y2="545" stroke="#333" stroke-width="2" />
+  <line x1="1175" y1="470" x2="1205" y2="610" stroke="#333" stroke-width="2" />
+  <line x1="1175" y1="470" x2="1320" y2="430" stroke="#333" stroke-width="1.6" stroke-dasharray="6 5" />
+  <line x1="1175" y1="470" x2="1390" y2="470" stroke="#333" stroke-width="1.6" stroke-dasharray="6 5" />
+  <line x1="1175" y1="470" x2="1390" y2="515" stroke="#333" stroke-width="1.6" stroke-dasharray="6 5" />
+  <line x1="1175" y1="470" x2="1345" y2="585" stroke="#333" stroke-width="1.6" stroke-dasharray="6 5" />
+  <circle cx="1175" cy="470" r="12" fill="#111" />
   <circle cx="1275" cy="545" r="12" fill="#111" />
   <circle cx="1205" cy="610" r="12" fill="#111" />
   <circle cx="1320" cy="430" r="9" fill="#fff" stroke="#111" stroke-width="3" />
   <circle cx="1390" cy="470" r="9" fill="#fff" stroke="#111" stroke-width="3" />
   <circle cx="1390" cy="515" r="9" fill="#fff" stroke="#111" stroke-width="3" />
   <circle cx="1345" cy="585" r="9" fill="#fff" stroke="#111" stroke-width="3" />
-  <text x="1225" y="457" font-family="Georgia, 'Times New Roman', serif" font-size="24" fill="#333">weather_day</text>
+  <text x="1175" y="457" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="24" fill="#333">weather_day</text>
   <text x="1288" y="552" font-family="Georgia, 'Times New Roman', serif" font-size="24" fill="#333">condition_class</text>
   <text x="1218" y="617" font-family="Georgia, 'Times New Roman', serif" font-size="24" fill="#333">severity_label</text>
   <text x="1332" y="435" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#333">temperature</text>
   <text x="1402" y="476" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#333">precipitation</text>
   <text x="1402" y="521" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#333">snow</text>
   <text x="1358" y="590" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#333">wind</text>
-  <text x="1165" y="425" font-family="Georgia, 'Times New Roman', serif" font-size="22" font-style="italic" fill="#333">start weather day</text>
+  <text x="1115" y="425" font-family="Georgia, 'Times New Roman', serif" font-size="22" font-style="italic" fill="#333">start weather day</text>
 
   <!-- Type mini-hierarchies -->
   <line x1="710" y1="565" x2="650" y2="675" stroke="#333" stroke-width="2" />
