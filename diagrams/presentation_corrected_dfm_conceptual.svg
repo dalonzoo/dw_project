@@ -115,8 +115,8 @@
   <text x="205" y="620" text-anchor="end" font-family="Georgia, 'Times New Roman', serif" font-size="24" fill="#333">CDTA/district</text>
   <text x="155" y="668" text-anchor="end" font-family="Georgia, 'Times New Roman', serif" font-size="24" fill="#333">borough</text>
   <text x="120" y="716" font-family="Georgia, 'Times New Roman', serif" font-size="24" fill="#333">city</text>
-  <text x="190" y="480" text-anchor="end" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#333">station_name</text>
-  <text x="190" y="522" text-anchor="end" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#333">coordinates</text>
+  <text x="322" y="480" text-anchor="end" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#333">station_name</text>
+  <text x="322" y="522" text-anchor="end" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#333">coordinates</text>
   <text x="375" y="450" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="22" font-style="italic" fill="#333">origin/destination</text>
 
   <!-- Weather context -->

@@ -175,6 +175,7 @@ Main dimensions:
 | `docs/phase8_quality_reproducibility.md` | Quality-check documentation and reproducibility baseline. |
 | `docs/charts/phase7/` | SVG and PNG chart assets for the presentation. |
 | `docs/hands_on_walkthrough.md` | Step-by-step local walkthrough for the demo and oral explanation. |
+| `docs/presentation_study_guide.md` | Italian study guide for the oral presentation and project defense. |
 
 ## Local Requirements
 
